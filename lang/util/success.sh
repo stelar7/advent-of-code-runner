@@ -3,9 +3,9 @@ set -uo pipefail
 D=$(dirname $(realpath $0))
 
 CMD="$1"
-TIME="$2ms"
+TIME="$($D/timeformat.sh $2)"
 FILE="$3"
-AVERAGE="$($D/average.sh $4)ms"
+AVERAGE="$($D/timeformat.sh $4)"
 
 
-printf "%-10s %-20s %-8s %-7s    ✅\n" "$CMD" "$(basename $(dirname -- $FILE))" "$TIME" "$AVERAGE"
+printf "%-10s %-20s %-8s %-10s ✅\n" "$CMD" "$(basename $(dirname -- $FILE))" "$TIME" "$AVERAGE"
