@@ -12,7 +12,7 @@ do
     while read INPUT OUTPUT; do
         CURRENT=$($D/util/start.sh)
 
-        cat $INPUT | node --harmony-top-level-await $SOLUTION | diff $OUTPUT -
+        cat $INPUT | node --harmony-top-level-await $SOLUTION | diff $OUTPUT - >/dev/null
         if [ $? -ne 0 ]; then
             $D/util/error.sh "node" "$SOLUTION" "$INPUT"
             break 2
