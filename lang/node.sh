@@ -12,7 +12,7 @@ while read INPUT OUTPUT; do
 
     cat $INPUT | timeout --signal=SIGKILL 20s node --harmony-top-level-await $SOLUTION | diff --strip-trailing-cr $OUTPUT - >/dev/null
     if [ $? -ne 0 ]; then
-        $D/util/error.sh "node" "$SOLUTION" "$INPUT" "$($D/util/stop.sh $CURRENT)" "0"
+        $D/util/error.sh "NodeJS" "$SOLUTION" "$INPUT" "$($D/util/stop.sh $CURRENT)" "0"
         exit
     fi
 
@@ -21,4 +21,4 @@ done < <(echo $IO_FILES | xargs -n2)
 
 TOTAL=$($D/util/stop.sh $START)
 
-$D/util/success.sh "node" "$TOTAL" "$SOLUTION" "$TIMES" "0"
+$D/util/success.sh "NodeJS" "$TOTAL" "$SOLUTION" "$TIMES" "0"
