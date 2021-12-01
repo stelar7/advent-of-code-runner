@@ -1,8 +1,8 @@
 #include "common.hpp"
 #include <cstdio>
 
-int ONE();
-int TWO();
+int ONE(const char* file = nullptr);
+int TWO(const char* file = nullptr);
 
 #ifdef BENCHMARK
 #include "duration.hpp"
@@ -41,9 +41,15 @@ int BENCHMARK()
 
 #else
 
-int RUNNER()
+int RUNNER(int argc, char* argv[])
 {
-	printf("%d\n%d\n", ONE(), TWO());
+	if (argc < 2)
+	{
+		printf("Missing input!");
+		return -1;
+	}
+
+	printf("%d\n%d\n", ONE(argv[1]), TWO(argv[1]));
 
 	return 0;
 }

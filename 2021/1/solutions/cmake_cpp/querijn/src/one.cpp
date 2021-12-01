@@ -3,11 +3,11 @@
 #include <iostream>
 #include <fstream>
 
-int ONE()
+int ONE(const char* file)
 {
 	int number;
 
-	std::ifstream input_file(FILE_NAME);
+	std::ifstream input_file(file ? file : FILE_NAME);
 	if (!input_file.is_open())
 		return -1;
 
