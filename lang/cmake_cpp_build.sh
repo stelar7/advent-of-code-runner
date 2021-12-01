@@ -8,9 +8,11 @@ for SOLUTION in $SOLUTION_FILES
 do
     START=$($D/util/start.sh)
 
+    rm -rf $SOLUTION/build
     mkdir $SOLUTION/build
     cd $SOLUTION/build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    make
+    timeout --signal=SIGKILL 20s cmake -DCMAKE_BUILD_TYPE=Release .. >/dev/null
+    timeout --signal=SIGKILL 20s make >/dev/null
 
+    echo $($D/util/stop.sh $START)
 done

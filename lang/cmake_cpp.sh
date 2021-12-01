@@ -7,14 +7,16 @@ IO_FILES=$2
 
 for SOLUTION in $SOLUTION_FILES
 do
+    COMPILETIME=$($D/cmake_cpp_build.sh $SOLUTION)
+
     START=$($D/util/start.sh)
 
     while read INPUT OUTPUT; do
         CURRENT=$($D/util/start.sh)
 
-        cat $INPUT | timeout --signal=SIGKILL 10s $SOLUTION/build/out $INPUT | diff --strip-trailing-cr $OUTPUT - >/dev/null
+        cat $INPUT | timeout --signal=SIGKILL 20s $SOLUTION/build/out $INPUT | diff --strip-trailing-cr $OUTPUT - >/dev/null
         if [ $? -ne 0 ]; then
-            $D/util/error.sh "C++" "$SOLUTION/CMakeLists.txt" "$INPUT" "$($D/util/stop.sh $CURRENT)"
+            $D/util/error.sh "C++" "$SOLUTION/CMakeLists.txt" "$INPUT" "$($D/util/stop.sh $CURRENT)" "$COMPILETIME"
             break 2
         fi
 
@@ -22,7 +24,6 @@ do
     done < <(echo $IO_FILES | xargs -n2)
 
     TOTAL=$($D/util/stop.sh $START)
-    rm -rf $SOLUTION/build
 
-    $D/util/success.sh "C++" "$TOTAL" "$SOLUTION/CMakeLists.txt" "$TIMES"
+    $D/util/success.sh "C++" "$TOTAL" "$SOLUTION/CMakeLists.txt" "$TIMES" "$COMPILETIME"
 done

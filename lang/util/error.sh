@@ -6,5 +6,6 @@ CMD="$1"
 FILE="$2"
 INPUT="$3"
 TIMEOUT="$($D/timeformat.sh $4)"
+COMPILETIME="$($D/timeformat.sh $5)"
 
-printf "%-10s %-20s %-19s ❌ %s\n" "$CMD" "$(basename $(dirname -- $FILE))" "$TIMEOUT" "$INPUT"
+printf "%-10s %-15s %-10s %-19s ❌ %s\n" "$CMD" "$(basename $(dirname -- $FILE))" "$COMPILETIME" "$TIMEOUT" "$INPUT"
