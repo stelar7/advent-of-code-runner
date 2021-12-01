@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-int ONE(const char* file)
+int part_one(const char* file)
 {
 	int number;
 
