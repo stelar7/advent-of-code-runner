@@ -8,6 +8,7 @@ for SOLUTION in $SOLUTION_FILES
 do
     START=$($D/util/start.sh)
 
+    mkdir $SOLUTION/build
     cd $SOLUTION/build
     cmake -DCMAKE_BUILD_TYPE=Release ..
     make

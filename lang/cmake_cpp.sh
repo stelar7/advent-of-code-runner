@@ -22,6 +22,7 @@ do
     done < <(echo $IO_FILES | xargs -n2)
 
     TOTAL=$($D/util/stop.sh $START)
+    rm -rf $SOLUTION/build
 
     $D/util/success.sh "C++" "$TOTAL" "$SOLUTION/CMakeLists.txt" "$TIMES"
 done
