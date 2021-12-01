@@ -1,7 +1,7 @@
 # All PRs must include your input and output for the day.
 
 ## Code
-Your code should accept input via. STDIN, and output the results to STDOUT.
+Your code should accept input via. STDIN, and output the results to STDOUT.  
 Each part should be separated by a newline ( `\n` )
 
 ## Source
