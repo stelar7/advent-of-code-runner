@@ -7,7 +7,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # 2. Build things from source first, so get build deps installed
 RUN apt-get update && apt-get install -yqq --no-install-recommends\
   # build-essential includes `make`, `gcc` and `g++`
-  build-essential git wget ca-certificates curl unzip
+  build-essential git wget ca-certificates curl unzip ninja-build ccache
 
 # 3. Tell apt to install node.js from nodesource.com, to get v16.x instead of v12.x
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -

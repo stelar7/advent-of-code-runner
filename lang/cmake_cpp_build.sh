@@ -11,8 +11,8 @@ do
     rm -rf $SOLUTION/build
     mkdir $SOLUTION/build
     cd $SOLUTION/build
-    timeout --signal=SIGKILL 20s cmake -DCMAKE_BUILD_TYPE=Release .. >/dev/null
-    timeout --signal=SIGKILL 20s make >/dev/null
+    timeout --signal=SIGKILL 20s cmake -G Ninja -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_BUILD_TYPE=Release .. >/dev/null
+    timeout --signal=SIGKILL 20s ninja >/dev/null
 
     echo $($D/util/stop.sh $START)
 done
