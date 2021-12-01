@@ -8,4 +8,4 @@ INPUT="$3"
 TIMEOUT="$($D/timeformat.sh $4)"
 COMPILETIME="$($D/timeformat.sh $5)"
 
-printf "%-10s %-15s %-10s %-19s ❌ %s\n" "$CMD" "$(basename $(dirname -- $FILE))" "$COMPILETIME" "$TIMEOUT" "$INPUT"
+printf "%-10s %-15s %-10s %-21s ❌ %s\n" "$CMD" "$(basename $(dirname -- $FILE))" "$COMPILETIME" "$TIMEOUT" "$INPUT"
