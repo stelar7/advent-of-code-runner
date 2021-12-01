@@ -13,8 +13,8 @@ int part_two(const char* file = nullptr);
 
 int BENCHMARK()
 {
-	int v1 = ONE();
-	int v2 = TWO();
+	int v1 = part_one();
+	int v2 = part_two();
 	BM_ASS(v1 >= 0 && v2 >= 0, "Invalid initial input: %d / %d\n", v1, v2);
 
 	f64 total2 = 0;
