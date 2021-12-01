@@ -12,7 +12,7 @@ do
     while read INPUT OUTPUT; do
         CURRENT=$($D/util/start.sh)
 
-        cat $INPUT | timeout --signal=SIGKILL 10s node --harmony-top-level-await $SOLUTION | diff $OUTPUT - >/dev/null
+        cat $INPUT | timeout --signal=SIGKILL 10s node --harmony-top-level-await $SOLUTION | diff --strip-trailing-cr $OUTPUT - >/dev/null
         if [ $? -ne 0 ]; then
             $D/util/error.sh "node" "$SOLUTION" "$INPUT" "$($D/util/stop.sh $CURRENT)"
             break 2
