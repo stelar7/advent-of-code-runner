@@ -9,7 +9,7 @@ fn main() {
         .lock()
         .lines()
         .map(|line| {
-            line.expect("Failed to read line.")
+            line.expect("Failed to read line as UTF-8.")
                 .parse::<usize>()
                 .expect("Failed to parse int.")
         })
