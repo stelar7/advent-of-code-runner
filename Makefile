@@ -23,4 +23,4 @@ docker.test:
 	/bin/bash -c "cd /test && make test && exit"
 
 test:
-	./$(YEAR)/$(DAY)/test.sh | awk '{print $$4, $$0}' | sort -n | cut -d' ' -f2-
+	./$(YEAR)/$(DAY)/test.sh | awk '{print $$4, $$0}' | sort -n | cut -d' ' -f2- > ./$(YEAR)/$(DAY)/leaderboard.txt
