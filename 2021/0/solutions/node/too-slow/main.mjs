@@ -15,4 +15,4 @@ for (const line of lines) {
 setTimeout(() => {
   console.log(`${sumAll}`);
   console.log(`${sumOdd}`);
-}, 10000);
+}, 20000);

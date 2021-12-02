@@ -1,0 +1,47 @@
+name: Run tests
+on: [pull_request]
+concurrency:
+  group: ${{ github.head_ref || format('{0}-{1}', github.ref, github.run_number) }}
+  cancel-in-progress: true
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with: 
+          node-version: 16
+      - name: Install essentials
+        run: |
+          sudo apt-get update;
+          sudo apt-get install -yqq --no-install-recommends build-essential git wget ca-certificates curl unzip ninja-build ccache;
+      - name: Install cmake
+        run: |
+          sudo apt remove --purge --auto-remove cmake; 
+          sudo apt update; 
+          sudo apt install -y software-properties-common lsb-release; 
+          sudo apt clean all; 
+          sudo wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null; 
+          sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"; 
+          sudo apt update; 
+          sudo apt install cmake;
+
+      - name: Install other compilers
+        run: |
+          sudo apt-get update;
+          sudo apt-get install -yqq --no-install-recommends cargo openjdk-17-jdk golang nodejs php-cli python3 ruby rustc;
+          sudo rm -rf /var/lib/apt/lists/*;
+          sudo apt-get autoremove -yqq;
+
+      - name: Run tests
+        run: |
+          make test YEAR=2021 DAY=1;
+          make test YEAR=2021 DAY=2;
+
+      - name: Push new leaderboards
+        run: |
+          git config --local user.email "actions@github.com";
+          git config --local user.name "Github Actions";
+          git add leaderboards/*
+          git commit -m "Update leaderboards"
+          git push origin "${{ github.head_ref }}";
