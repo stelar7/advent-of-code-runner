@@ -8,10 +8,12 @@ jobs:
       - uses: actions/setup-node@v2
         with: 
           node-verison: 16
-      - run: |
+      - name: Install essentials
+        run: |
           sudo apt-get update;
           sudo apt-get install -yqq --no-install-recommends build-essential git wget ca-certificates curl unzip ninja-build ccache;
-      - run: |
+      - name: Install cmake
+        run: |
           sudo apt remove --purge --auto-remove cmake; 
           sudo apt update; 
           sudo apt install -y software-properties-common lsb-release; 
@@ -21,12 +23,13 @@ jobs:
           sudo apt update; 
           sudo apt install cmake;
 
-      - run: |
-          sudo apt-get update && apt-get install -yqq --no-install-recommends \
-          cargo openjdk-17-jdk golang nodejs php-cli python3 ruby rustc;
+      - name: Install other compilers
+        run: |
+          sudo apt-get update && apt-get install -yqq --no-install-recommends cargo openjdk-17-jdk golang nodejs php-cli python3 ruby rustc;
           sudo rm -rf /var/lib/apt/lists/*;
           sudo apt-get autoremove -yqq;
 
-      - run: |
+      - name: Run tests
+        run: |
           make test YEAR=2021 DAY=1;
           make test YEAR=2021 DAY=2;
