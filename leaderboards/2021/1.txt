@@ -1,12 +1,12 @@
 
 -- Day 1 --
 language   author          compile    total      average    status     
-Java       stelar7         807ms      1s55ms     116ms      ✅
-Rust       molenzwiebel    4s523ms    138ms      10ms       ✅
-Rust       mingweisamuel   8s518ms    145ms      10ms       ✅
-C++        querijn         1s297ms    149ms      11ms       ✅
-Golang     slate           328ms      151ms      11ms       ✅
-C#         renkon          3s332ms    305ms                 ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/example.input
-Python3    kurainu         0ms        372ms      36ms       ✅
-C#         aoshiw          1s802ms    689ms      77ms       ✅
-NodeJS     stelar7         0ms        750ms      202ms      ✅
+Rust       mingweisamuel   11s300ms   117ms      8ms        ✅
+C++        querijn         1s81ms     119ms      8ms        ✅
+Rust       molenzwiebel    3s998ms    119ms      8ms        ✅
+Golang     slate           280ms      122ms      10ms       ✅
+Python3    kurainu         0ms        289ms      27ms       ✅
+C#         renkon          3s331ms    591ms      65ms       ✅
+NodeJS     stelar7         0ms        597ms      157ms      ✅
+C#         aoshiw          1s590ms    607ms      63ms       ✅
+Java       stelar7         697ms      892ms      85ms       ✅
