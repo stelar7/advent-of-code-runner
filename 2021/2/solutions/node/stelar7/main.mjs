@@ -23,9 +23,6 @@ for (const line of lines) {
     x += amount * directions[direction];
     depth += aim * amount;
   }
-
-  if (direction == "down") {
-  }
 }
 
 console.log(`${x * y}`);
