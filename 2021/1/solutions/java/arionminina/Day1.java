@@ -39,7 +39,7 @@ public class Day1 {
             }
         }
 
-        System.out.println(counter2);
+        System.out.println("Result: "+counter2);
 
     }
 
