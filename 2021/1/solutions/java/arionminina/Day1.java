@@ -1,7 +1,9 @@
 
 package day1;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.*;
 import java.util.*;
 
@@ -13,8 +15,8 @@ public class Day1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        String source = "input.txt";
-        Path path = Paths.get(source);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Path path = Paths.get(br.readLine());
         List<String> lines = Files.readAllLines(path);
         List<Integer> listInteger;
         listInteger = lines.stream().map(Integer::parseInt).collect(Collectors.toList());
