@@ -52,6 +52,29 @@ jobs:
         run: |
           make test YEAR=2021 DAY=1;
           make test YEAR=2021 DAY=2;
+          make test YEAR=2021 DAY=3;
+          make test YEAR=2021 DAY=4;
+          make test YEAR=2021 DAY=5;
+          make test YEAR=2021 DAY=6;
+          make test YEAR=2021 DAY=7;
+          make test YEAR=2021 DAY=8;
+          make test YEAR=2021 DAY=9;
+          make test YEAR=2021 DAY=10;
+          make test YEAR=2021 DAY=11;
+          make test YEAR=2021 DAY=12;
+          make test YEAR=2021 DAY=13;
+          make test YEAR=2021 DAY=14;
+          make test YEAR=2021 DAY=15;
+          make test YEAR=2021 DAY=16;
+          make test YEAR=2021 DAY=17;
+          make test YEAR=2021 DAY=18;
+          make test YEAR=2021 DAY=19;
+          make test YEAR=2021 DAY=20;
+          make test YEAR=2021 DAY=21;
+          make test YEAR=2021 DAY=22;
+          make test YEAR=2021 DAY=23;
+          make test YEAR=2021 DAY=24;
+          make test YEAR=2021 DAY=25;
 
       - name: Push new leaderboards
         run: |
