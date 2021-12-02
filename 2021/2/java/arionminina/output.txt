@@ -1,1 +1,7 @@
+//Part One
+Result:2039256
+
+
+
+//Part Two
 Result:1856459736
