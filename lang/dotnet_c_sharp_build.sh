@@ -9,6 +9,6 @@ rm -rf $OUTPUT
 
 START=$($D/util/start.sh)
 
-timeout --signal=SIGKILL 120s dotnet build -o "$OUTPUT" "$SOLUTION"
+timeout --signal=SIGKILL 120s dotnet build -c Release -o "$OUTPUT" "$SOLUTION"
 
 echo $($D/util/stop.sh $START)
