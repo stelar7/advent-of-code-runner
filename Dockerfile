@@ -24,6 +24,6 @@ RUN apt remove --purge --auto-remove cmake; \
 
 # 5. Install all other compilers, from apt-get
 RUN apt-get update && apt-get install -yqq --no-install-recommends\
-  openjdk-17-jdk golang nodejs php-cli python3 ruby rustc \
+  cargo openjdk-17-jdk golang nodejs php-cli python3 ruby rustc \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get autoremove -yqq
