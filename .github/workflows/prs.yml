@@ -21,7 +21,7 @@ jobs:
       - name: Install essentials
         run: |
           sudo apt-get update;
-          sudo apt-get install -yqq --no-install-recommends build-essential git wget ca-certificates curl unzip ninja-build ccache;
+          sudo apt-get install -yqq --no-install-recommends build-essential git wget ca-certificates curl unzip ninja-build ccache gnupg;
           
       - name: Install cmake
         run: |
@@ -32,7 +32,14 @@ jobs:
           sudo wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null; 
           sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"; 
           sudo apt update; 
-          sudo apt install cmake;
+          sudo apt install cmake -yqq;
+      
+      - name: Install Mono (C#)
+        run: |
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF;
+          echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list;
+          sudo apt update;
+          sudo apt install mono-complete -yqq;
 
       - name: Install other compilers
         run: |
