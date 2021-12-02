@@ -14,7 +14,7 @@ AUTHOR="$SOLUTION/bin"
 while read INPUT OUTPUT; do
     CURRENT=$($D/util/start.sh)
 
-    cat $INPUT | timeout --signal=SIGKILL 20s "$EXECUTABLE" | diff --strip-trailing-cr $OUTPUT - 
+    cat $INPUT | timeout --signal=SIGKILL 20s "$EXECUTABLE" | diff --strip-trailing-cr $OUTPUT - >/dev/null
     if [ $? -ne 0 ]; then
         $D/util/error.sh "C#" "$AUTHOR" "$INPUT" "$($D/util/stop.sh $CURRENT)" "$COMPILETIME"
         exit

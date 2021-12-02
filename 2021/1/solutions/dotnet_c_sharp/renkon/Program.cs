@@ -1,9 +1,11 @@
-﻿int[] n = new int[2000];
+﻿List<int> n = new List<int>(2000);
 int c1 = 0, c2 = 0;
-
-for (int i = 0; i < 2000; i++)
+int i = 0;
+string s;
+while ((s = Console.ReadLine()) != null)
 {
-    string s = Console.ReadLine();
+    n.Add(0);
+
     for (int j = 0; j < s.Length; j++)
     {
         n[i] = n[i] * 10 + (s[j] - '0');
@@ -25,6 +27,8 @@ for (int i = 0; i < 2000; i++)
     {
         c1++;
     }
+
+    i++;
 }
 
 Console.WriteLine(c1);
