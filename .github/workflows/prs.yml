@@ -55,8 +55,6 @@ jobs:
 
       - name: Push new leaderboards
         run: |
-          git config --local user.email "actions@github.com";
-          git config --local user.name "Github Actions";
           git add leaderboards/*
-          git commit -m "Update leaderboards"
+          git -c 'user.name=github-actions[bot]' -c 'user.email=41898282+github-actions[bot]@users.noreply.github.com' commit -m "Update leaderboards"
           git push
