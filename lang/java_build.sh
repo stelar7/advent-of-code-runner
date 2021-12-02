@@ -4,11 +4,10 @@ D=$(dirname $(realpath $0))
 
 SOLUTION=$1
 
-OUTPUT="$(dirname $SOLUTION)/build"
-rm -rf $OUTPUT
+rm -rf $SOLUTION.class
 
 START=$($D/util/start.sh)
 
-timeout --signal=SIGKILL 120s dotnet build -c Release -o "$OUTPUT" "$SOLUTION"
+timeout --signal=SIGKILL 20s javac $SOLUTION.java > /dev/null 2>&1
 
 echo $($D/util/stop.sh $START)
