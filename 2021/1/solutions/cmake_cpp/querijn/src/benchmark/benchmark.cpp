@@ -1,8 +1,8 @@
 #include "common.hpp"
 #include <cstdio>
 
-int ONE(const char* file = nullptr);
-int TWO(const char* file = nullptr);
+int part_one(const char* file = nullptr);
+int part_two(const char* file = nullptr);
 
 #ifdef BENCHMARK
 #include "duration.hpp"
@@ -13,8 +13,8 @@ int TWO(const char* file = nullptr);
 
 int BENCHMARK()
 {
-	int v1 = ONE();
-	int v2 = TWO();
+	int v1 = part_one();
+	int v2 = part_two();
 	BM_ASS(v1 >= 0 && v2 >= 0, "Invalid initial input: %d / %d\n", v1, v2);
 
 	f64 total2 = 0;
@@ -22,12 +22,12 @@ int BENCHMARK()
 	for (int i = 0; i < COUNT; i++)
 	{
 		Spek::Duration start1 = Spek::GetTimeSinceStart();
-		int result = ONE();
+		int result = part_one();
 		BM_ASS(result == v1, "Result of ONE needs to be %d, is %d instead.\n", v1, result);
 		Spek::Duration end1 = Spek::GetTimeSinceStart();
 
 		Spek::Duration start2 = Spek::GetTimeSinceStart();
-		result = TWO();
+		result = part_two();
 		BM_ASS(result == v2, "Result of TWO needs to be %d, is %d instead.\n", v2, result);
 		Spek::Duration end2 = Spek::GetTimeSinceStart();
 
@@ -41,6 +41,10 @@ int BENCHMARK()
 
 #else
 
+// These might become main, they should call the original function
+int ONE(int argc, char* argv[]) { return part_one(argv[1]); }
+int TWO(int argc, char* argv[]) { return part_two(argv[1]); }
+
 int RUNNER(int argc, char* argv[])
 {
 	if (argc < 2)
@@ -49,7 +53,7 @@ int RUNNER(int argc, char* argv[])
 		return -1;
 	}
 
-	printf("%d\n%d\n", ONE(argv[1]), TWO(argv[1]));
+	printf("%d\n%d\n", part_one(argv[1]), part_two(argv[1]));
 
 	return 0;
 }
