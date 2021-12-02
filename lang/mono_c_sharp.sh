@@ -5,7 +5,7 @@ D=$(dirname $(realpath $0))
 SOLUTION=$1
 IO_FILES=$2
 
-COMPILETIME=$($D/c_sharp_build.sh $SOLUTION)
+COMPILETIME=$($D/mono_c_sharp_build.sh $SOLUTION)
 START=$($D/util/start.sh)
 
 EXECUTABLE="$(dirname $SOLUTION)/out.exe"
