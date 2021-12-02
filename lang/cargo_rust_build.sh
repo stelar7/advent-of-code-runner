@@ -4,6 +4,7 @@ D=$(dirname $(realpath $0))
 
 SOLUTION=$1
 
+rm -rf $SOLUTION/target
 
 START=$($D/util/start.sh)
 
