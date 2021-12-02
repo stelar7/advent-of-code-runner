@@ -5,7 +5,7 @@ D=$(dirname $(realpath $0))
 SOLUTION=$1
 IO_FILES=$2
 
-COMPILETIME=$($D/rust_build.sh $SOLUTION)
+COMPILETIME=$($D/cargo_rust_build.sh $SOLUTION)
 START=$($D/util/start.sh)
 
 while read INPUT OUTPUT; do
