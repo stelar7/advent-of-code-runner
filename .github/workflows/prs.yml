@@ -37,3 +37,11 @@ jobs:
         run: |
           make test YEAR=2021 DAY=1;
           make test YEAR=2021 DAY=2;
+
+      - name: Push new leaderboards
+        run: |
+          git config --local user.email "actions@github.com";
+          git config --local user.name "Github Actions";
+          git add leaderboards/*
+          git commit -m "Update leaderboards"
+          git push origin "${{ github.head_ref }}";
