@@ -38,7 +38,7 @@ public class Day2 {
                     if (matcher1.find()) {
                         int b = Integer.parseInt(matcher1.group());
 
-                        forward = forward + b;
+                        forward = forward + b; 
                         //Delete the part before the colon for Part 2: depth = depth + aim * b;
 
                     }
@@ -47,7 +47,7 @@ public class Day2 {
                     Matcher matcher1 = pattern1.matcher(lines.get(i));
                     if (matcher1.find()) {
                         int b = Integer.parseInt(matcher1.group());
-                        depth = depth + b;
+                        depth = depth + b; //Delete this line of code for Part 2
                         //Delete the part before the colon for Part 2: aim = aim + b;
 
                     }
@@ -56,7 +56,7 @@ public class Day2 {
                     Matcher matcher1 = pattern1.matcher(lines.get(i));
                     if (matcher1.find()) {
                         int b = Integer.parseInt(matcher1.group());
-                         depth = depth - b;
+                         depth = depth - b;  //Delete this line of code for Part 2
                         //Delete the part before the colon for Part 2: aim = aim - b;
 
                     }
