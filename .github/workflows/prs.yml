@@ -52,4 +52,4 @@ jobs:
           git config --local user.name "Github Actions";
           git add leaderboards/*
           git commit -m "Update leaderboards"
-          git push origin "${{ github.head_ref }}";
+          git push
