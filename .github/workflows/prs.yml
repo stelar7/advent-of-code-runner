@@ -7,14 +7,21 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install NodeJS@16
+        uses: actions/setup-node@v2
         with: 
           node-version: 16
+
       - name: Install essentials
         run: |
           sudo apt-get update;
           sudo apt-get install -yqq --no-install-recommends build-essential git wget ca-certificates curl unzip ninja-build ccache;
+          
       - name: Install cmake
         run: |
           sudo apt remove --purge --auto-remove cmake; 
