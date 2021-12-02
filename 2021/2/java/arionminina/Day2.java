@@ -1,10 +1,12 @@
 package day2;
 
+import java.io.BufferedReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,8 +22,8 @@ public class Day2 {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        String source = "input.txt";
-        Path path = Paths.get(source);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Path path = Paths.get(br.readLine());
         List<String> lines = Files.readAllLines(path);
         int forward = 0;
         int depth = 0;
