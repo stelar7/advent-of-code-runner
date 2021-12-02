@@ -1,9 +1,9 @@
 
 -- Day 1 --
 language   author          compile    total      average    status     
-Rust       molenzwiebel    4s309ms    7ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
-C++        querijn         1s947ms    8ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
-Rust       mingweisamuel   9s589ms    8ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
-Golang     slate           311ms      9ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
-Python3    kurainu         0ms        30ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
-NodeJS     stelar7         0ms        50ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
+Rust       molenzwiebel    4s24ms     7ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
+C++        querijn         1s771ms    8ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
+Golang     slate           284ms      8ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
+Rust       mingweisamuel   10s67ms    8ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
+Python3    kurainu         0ms        27ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
+NodeJS     stelar7         0ms        51ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/slate.input
