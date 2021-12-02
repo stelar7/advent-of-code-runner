@@ -9,6 +9,7 @@ itertools = "0.10"
 
 [profile.release]
 opt-level = 3
+panic = "abort"
 
 [[bin]]
 name = "out"
