@@ -4,11 +4,11 @@ D=$(dirname $(realpath $0))
 
 SOLUTION=$1
 
-OUTPUT="$(dirname $SOLUTION)/build"
-rm -rf $OUTPUT
+rm -rf "$SOLUTION/obj"
+rm -rf "$SOLUTION/bin"
 
 START=$($D/util/start.sh)
 
-timeout --signal=SIGKILL 120s dotnet build -c Release -o "$OUTPUT" "$SOLUTION"
+timeout --signal=SIGKILL 120s dotnet build --configuration Release "$SOLUTION" >/dev/null
 
 echo $($D/util/stop.sh $START)
