@@ -1,11 +1,11 @@
 
 -- Day 2 --
 language   author          compile    total      average    status     
-C++        querijn         757ms      7ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-Golang     slate           265ms      7ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-Python3    kurainu         0ms        26ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-C#         renkon          1553ms     52ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-NodeJS     stelar7         0ms        52ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-Rust       mingweisamuel   2620ms     190ms                 ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-Rust       molenzwiebel    928ms      225ms                 ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-C#         aoshiw          1431ms     613ms      68ms       ✅
+C++        querijn         769ms      7ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
+Golang     slate           264ms      8ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
+Python3    kurainu         0ms        27ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
+NodeJS     stelar7         0ms        48ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
+C#         renkon          1571ms     57ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
+Rust       mingweisamuel   2638ms     187ms                 ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
+Rust       molenzwiebel    944ms      225ms                 ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
+C#         aoshiw          1451ms     607ms      58ms       ✅
