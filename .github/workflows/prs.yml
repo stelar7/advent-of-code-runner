@@ -85,7 +85,7 @@ jobs:
           exit $?
 
       - name: Push new leaderboards
-        if: github.event_name == 'push'
+        if: always() && github.event_name == 'push'
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com";
           git config --local user.name "github-actions[bot]";
