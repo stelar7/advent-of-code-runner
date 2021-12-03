@@ -18,5 +18,4 @@ while ((s = Console.ReadLine()) != null)
     }
 }
 
-Console.WriteLine(x * y);
-Console.WriteLine(x * z);
+Console.WriteLine(x * y + "\n" + x * z);
