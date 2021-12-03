@@ -42,7 +42,6 @@ func (d D3) PartOne(in []string) int64 {
 	if err != nil {
 		log.Fatal(err)
 	}
-	println(epsilon_decimal, gamma_decimal)
 	return gamma_decimal * epsilon_decimal
 }
 
@@ -51,7 +50,6 @@ func (d D3) PartTwo(num int, in []string, oxco string) string {
 	zeroes := 0
 	var onenum []string
 	var zeronum []string
-	println(len(in), "-")
 
 	if len(in) == 1 {
 		return in[0]
