@@ -1,3 +1,0 @@
-
--- Day 4 --
-language   author          compile    total      average    status     

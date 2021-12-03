@@ -1,7 +1,0 @@
-
--- Day 0 --
-language   author          compile    total      average    status     
-NodeJS     too-slow        0ms        20s6ms                ❌ /home/stelar7/advent-of-code-runner/2021/0/io/example.input
-NodeJS     wrong           0ms        42ms                  ❌ /home/stelar7/advent-of-code-runner/2021/0/io/example.input
-NodeJS     example         0ms        84ms       37ms       ✅
-NodeJS     slow            0ms        543ms      257ms      ✅
