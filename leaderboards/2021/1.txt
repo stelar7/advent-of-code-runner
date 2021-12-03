@@ -1,0 +1,13 @@
+
+-- Day 1 --
+language   author          compile    total      average    status     
+Perl       slate           0ms        10ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/1/io/aoshiw.input
+Rust       mingweisamuel   10001ms    134ms      10ms       ✅
+Rust       molenzwiebel    4759ms     134ms      8ms        ✅
+Golang     slate           330ms      141ms      12ms       ✅
+C++        querijn         1407ms     144ms      11ms       ✅
+Python3    kurainu         0ms        371ms      32ms       ✅
+C#         renkon          3717ms     653ms      74ms       ✅
+C#         aoshiw          1920ms     661ms      66ms       ✅
+NodeJS     stelar7         0ms        712ms      186ms      ✅
+Java       stelar7         834ms      1111ms     124ms      ✅
