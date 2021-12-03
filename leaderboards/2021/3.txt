@@ -1,5 +1,5 @@
 
 -- Day 3 --
 language   author          compile    total      average    status     
-Python3    kurainu         0ms        140ms      36ms       ✅
-NodeJS     stelar7         0ms        262ms      63ms       ✅
+Python3    kurainu         0ms        121ms      29ms       ✅
+NodeJS     stelar7         0ms        256ms      94ms       ✅

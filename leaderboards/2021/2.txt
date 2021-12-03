@@ -1,11 +1,11 @@
 
 -- Day 2 --
 language   author          compile    total      average    status     
-Golang     slate           331ms      9ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-C++        querijn         1015ms     10ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-Python3    kurainu         0ms        35ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-C#         renkon          2017ms     65ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-NodeJS     stelar7         0ms        66ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-Rust       mingweisamuel   3580ms     245ms                 ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-Rust       molenzwiebel    1223ms     261ms                 ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/renkon.input
-C#         aoshiw          1903ms     721ms      73ms       ✅
+Rust       mingweisamuel   3153ms     128ms      9ms        ✅
+Rust       molenzwiebel    989ms      130ms      10ms       ✅
+Golang     slate           318ms      135ms      10ms       ✅
+C++        querijn         871ms      137ms      11ms       ✅
+Python3    kurainu         0ms        335ms      32ms       ✅
+C#         renkon          2015ms     667ms      61ms       ✅
+NodeJS     stelar7         0ms        691ms      57ms       ✅
+C#         aoshiw          1709ms     772ms      68ms       ✅
