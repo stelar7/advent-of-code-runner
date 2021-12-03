@@ -15,7 +15,6 @@ while (<>) {
     if (($threepast + $twopast + $past) < ($twopast + $past + $current)) {
 	    $countertwo += 1;
     }
-
     $threepast = $twopast;
     $twopast = $past;
     $past = $current;
