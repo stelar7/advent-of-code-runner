@@ -1,3 +1,0 @@
-
--- Day 18 --
-language   author          compile    total      average    status     

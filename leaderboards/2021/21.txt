@@ -1,3 +1,0 @@
-
--- Day 21 --
-language   author          compile    total      average    status     
