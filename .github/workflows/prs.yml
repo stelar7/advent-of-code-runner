@@ -47,7 +47,7 @@ jobs:
       - name: Install other compilers
         run: |
           sudo apt-get update;
-          sudo apt-get install -yqq --no-install-recommends cargo openjdk-17-jdk golang nodejs php-cli python3 ruby rustc perl;
+          sudo apt-get install -yqq --no-install-recommends cargo openjdk-17-jdk golang perl nodejs php-cli python3 ruby rustc;
           sudo rm -rf /var/lib/apt/lists/*;
           sudo apt-get autoremove -yqq;
 
