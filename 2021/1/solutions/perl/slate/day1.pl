@@ -6,19 +6,25 @@ $counter = 0;
 
 $threepast = 0;
 $twopast = 0;
-$countertwo = -2;
+$countertwo = 0;
+
+my @arr = ();
 
 while (<>) {
+    push @arr , $_;
     if ($current > $past) {
         $counter += 1;
     }
-    if (($threepast + $twopast + $past) < ($twopast + $past + $current)) {
-	    $countertwo += 1;
-    }
-    $threepast = $twopast;
-    $twopast = $past;
     $past = $current;
     $current = $_;
+}
+
+$length = @arr
+
+for ($i=0; $i<@arr; ++$i) {
+    if ((@arr[i+1] + @arr[i+2] + @arr[i+3]) < (@arr[i+2] + @arr[i+1] + @arr[i])) {
+        $countertwo += 1;
+    }
 }
 
 print $counter, "\n";
