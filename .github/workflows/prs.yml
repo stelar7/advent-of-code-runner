@@ -79,7 +79,13 @@ jobs:
           make test YEAR=2021 DAY=24;
           make test YEAR=2021 DAY=25;
 
+      - name: Check for failed tests
+        run: |
+          ! grep -r "❌" leaderboards/*
+          exit $?
+
       - name: Push new leaderboards
+        if: github.event_name == 'push'
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com";
           git config --local user.name "github-actions[bot]";
