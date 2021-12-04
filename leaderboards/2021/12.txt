@@ -1,3 +1,0 @@
-
--- Day 12 --
-language   author          compile    total      average    status     
