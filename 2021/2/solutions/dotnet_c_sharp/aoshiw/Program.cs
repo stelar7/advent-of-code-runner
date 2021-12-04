@@ -1,48 +1,23 @@
 var input = Console.In.ReadToEnd().AsSpan().Trim();
-Console.WriteLine(Part1(input));
-Console.WriteLine(Part2(input));
 
-int Part1(ReadOnlySpan<char> span)
+int horizontal = 0, depth = 0, aimdepth = 0;
+foreach (var item in input.EnumerateLines())
 {
-    int horizontal = 0, depth = 0;
-    foreach (var item in span.EnumerateLines())
+    int num = int.Parse(item.Slice(item.IndexOf(' ') + 1));
+    if (item.StartsWith("down", StringComparison.OrdinalIgnoreCase))
     {
-        int num = int.Parse(item.Slice(item.IndexOf(' ') + 1));
-        if (item.StartsWith("down", StringComparison.OrdinalIgnoreCase))
-        {
-            depth += num;
-        }
-        else if (item.StartsWith("up", StringComparison.OrdinalIgnoreCase))
-        {
-            depth -= num;
-        }
-        else
-        {
-            horizontal += num;
-        }
+        aimdepth += num;
     }
-    return horizontal * depth;
+    else if (item.StartsWith("up", StringComparison.OrdinalIgnoreCase))
+    {
+        aimdepth -= num;
+    }
+    else
+    {
+        horizontal += num;
+        depth += (aimdepth * num);
+    }
 }
 
-int Part2(ReadOnlySpan<char> span)
-{
-    int horizontal = 0, depth = 0, aim = 0;
-    foreach (var item in span.EnumerateLines())
-    {
-        int num = int.Parse(item.Slice(item.IndexOf(' ') + 1));
-        if (item.StartsWith("down", StringComparison.OrdinalIgnoreCase))
-        {
-            aim += num;
-        }
-        else if (item.StartsWith("up", StringComparison.OrdinalIgnoreCase))
-        {
-            aim -= num;
-        }
-        else
-        {
-            horizontal += num;
-            depth += (aim * num);
-        }
-    }
-    return horizontal * depth;
-}
+Console.WriteLine(horizontal * aimdepth);
+Console.WriteLine(horizontal * depth);
