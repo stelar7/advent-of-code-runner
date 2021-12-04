@@ -1,73 +1,77 @@
-use std::{convert::TryInto, io::BufRead};
-
 use itertools::Itertools;
+use std::io::BufRead;
 
 struct BingoBoard {
-    board: [usize; 25],
+    marks: i32,
+    locations: [i32; 100],
     won: bool,
 }
 
 impl BingoBoard {
-    fn new(board: [usize; 25]) -> Self {
-        Self { board, won: false }
+    fn new(board: [i32; 100]) -> Self {
+        Self {
+            locations: board,
+            marks: 0,
+            won: false,
+        }
     }
 
-    fn try_win(&mut self, marked: &[bool; 100]) -> Option<usize> {
-        if self.won || !self.is_complete(marked) {
+    fn try_win(&mut self, value: usize) -> Option<usize> {
+        let idx = self.locations[value];
+        if idx == -1 {
             return None;
         }
 
-        let score = self.board.iter().filter(|&&x| !marked[x]).sum();
+        self.marks |= 1 << idx;
+
+        if self.won || !self.is_complete() {
+            return None;
+        }
+
+        let score = self
+            .locations
+            .iter()
+            .enumerate()
+            .filter(|(_, &x)| x != -1 && (self.marks & (1 << x)) == 0)
+            .map(|x| x.0 as i32)
+            .sum::<i32>();
         self.won = true;
 
-        Some(score)
+        Some(score as usize)
     }
 
-    fn is_complete(&self, marked: &[bool; 100]) -> bool {
-        let marked_nums = self
-            .board
-            .iter()
-            .map(|&x| marked[x])
-            .fold(0, |x, i| (x << 1) | (if i { 1 } else { 0 }));
-
+    fn is_complete(&self) -> bool {
         // horizontals
-        (marked_nums & 0b1111100000000000000000000) == 0b1111100000000000000000000 ||
-        (marked_nums & 0b0000011111000000000000000) == 0b0000011111000000000000000 ||
-        (marked_nums & 0b0000000000111110000000000) == 0b0000000000111110000000000 ||
-        (marked_nums & 0b0000000000000001111100000) == 0b0000000000000001111100000 ||
-        (marked_nums & 0b0000000000000000000011111) == 0b0000000000000000000011111 ||
+        (self.marks & 0b1111100000000000000000000) == 0b1111100000000000000000000 ||
+        (self.marks & 0b0000011111000000000000000) == 0b0000011111000000000000000 ||
+        (self.marks & 0b0000000000111110000000000) == 0b0000000000111110000000000 ||
+        (self.marks & 0b0000000000000001111100000) == 0b0000000000000001111100000 ||
+        (self.marks & 0b0000000000000000000011111) == 0b0000000000000000000011111 ||
 
         // verticals
-        (marked_nums & 0b1000010000100001000010000) == 0b1000010000100001000010000 ||
-        (marked_nums & 0b0100001000010000100001000) == 0b0100001000010000100001000 ||
-        (marked_nums & 0b0010000100001000010000100) == 0b0010000100001000010000100 ||
-        (marked_nums & 0b0001000010000100001000010) == 0b0001000010000100001000010 ||
-        (marked_nums & 0b0000100001000010000100001) == 0b0000100001000010000100001
+        (self.marks & 0b1000010000100001000010000) == 0b1000010000100001000010000 ||
+        (self.marks & 0b0100001000010000100001000) == 0b0100001000010000100001000 ||
+        (self.marks & 0b0010000100001000010000100) == 0b0010000100001000010000100 ||
+        (self.marks & 0b0001000010000100001000010) == 0b0001000010000100001000010 ||
+        (self.marks & 0b0000100001000010000100001) == 0b0000100001000010000100001
     }
 }
 
 struct BingoSession {
-    marked: [bool; 100], // 100 is the max number of unique numbers in a game
     boards: Vec<BingoBoard>,
 }
 
 impl BingoSession {
     fn new(boards: Vec<BingoBoard>) -> Self {
-        Self {
-            marked: [false; 100],
-            boards,
-        }
+        Self { boards }
     }
 
     fn mark(&mut self, number: usize) -> Option<usize> {
-        self.marked[number] = true;
-
         let boards = &mut self.boards;
-        let marked = &self.marked;
 
         let boards_won = boards
             .iter_mut()
-            .flat_map(|x| x.try_win(marked))
+            .flat_map(|x| x.try_win(number))
             .collect::<Vec<_>>();
 
         boards_won.first().map(|x| x * number)
@@ -109,7 +113,15 @@ fn main() {
                 .flatten()
                 .collect::<Vec<usize>>()
         })
-        .map(|x| BingoBoard::new(x.try_into().unwrap()))
+        .map(|x| {
+            let mut locations = [-1; 100];
+
+            for (idx, &val) in x.iter().enumerate() {
+                locations[val] = idx as i32;
+            }
+
+            BingoBoard::new(locations)
+        })
         .collect();
 
     let mut session = BingoSession::new(boards);
