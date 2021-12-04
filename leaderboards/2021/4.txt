@@ -1,7 +1,7 @@
 
 -- Day 4 --
 language   author          compile    total      average    status     
-Rust       molenzwiebel    3143ms     73ms       8ms        ✅
-C++        querijn         1146ms     75ms       8ms        ✅
-NodeJS     stelar7         0ms        372ms      52ms       ✅
-Python3    kurainu         0ms        470ms      31ms       ✅
+Rust       molenzwiebel    3042ms     70ms       7ms        ✅
+C++        querijn         1137ms     73ms       9ms        ✅
+Python3    kurainu         0ms        310ms      30ms       ✅
+NodeJS     stelar7         0ms        364ms      50ms       ✅
