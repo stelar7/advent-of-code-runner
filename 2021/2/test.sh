@@ -13,4 +13,5 @@ $D/../../lang/cargo_rust.sh			    "$D/solutions/rust/mingweisamuel"	        "$D/
 $D/../../lang/dotnet_c_sharp.sh		    "$D/solutions/dotnet_c_sharp/aoshiw"	    "$D/io/*"
 $D/../../lang/golang.sh				    "$D/solutions/golang/slate/"		        "$D/io/*"
 $D/../../lang/dotnet_c_sharp.sh		    "$D/solutions/dotnet_c_sharp/renkon"	    "$D/io/*"
+$D/../../lang/perl.sh				    "$D/solutions/perl/slate/day2.pl"		"$D/io/*"
 echo ""
