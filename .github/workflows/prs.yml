@@ -1,8 +1,5 @@
 name: Run tests
-on: [push]
-concurrency:
-  group: ${{ github.head_ref || format('{0}-{1}', github.ref, github.run_number) }}
-  cancel-in-progress: true
+on: [push, pull_request]
 jobs:
   run-tests:
     runs-on: ubuntu-latest
@@ -47,7 +44,7 @@ jobs:
       - name: Install other compilers
         run: |
           sudo apt-get update;
-          sudo apt-get install -yqq --no-install-recommends cargo openjdk-17-jdk golang nodejs php-cli python3 ruby rustc;
+          sudo apt-get install -yqq --no-install-recommends cargo openjdk-17-jdk golang perl nodejs php-cli python3 ruby rustc;
           sudo rm -rf /var/lib/apt/lists/*;
           sudo apt-get autoremove -yqq;
 
@@ -79,7 +76,13 @@ jobs:
           make test YEAR=2021 DAY=24;
           make test YEAR=2021 DAY=25;
 
+      - name: Check for failed tests
+        run: |
+          ! grep -r "❌" leaderboards/*
+          exit $?
+
       - name: Push new leaderboards
+        if: always() && github.event_name == 'push'
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com";
           git config --local user.name "github-actions[bot]";

@@ -8,14 +8,15 @@ IO_FILES=$2
 COMPILETIME=$($D/dotnet_c_sharp_build.sh $SOLUTION)
 START=$($D/util/start.sh)
 
-EXECUTABLE="$(dirname $SOLUTION)/out.exe"
+EXECUTABLE="$SOLUTION/bin/Release/net6.0/$(basename $SOLUTION)"
+AUTHOR="$SOLUTION/bin"
 
 while read INPUT OUTPUT; do
     CURRENT=$($D/util/start.sh)
 
     cat $INPUT | timeout --signal=SIGKILL 20s "$EXECUTABLE" | diff --strip-trailing-cr $OUTPUT - >/dev/null
     if [ $? -ne 0 ]; then
-        $D/util/error.sh "C#" "$SOLUTION" "$INPUT" "$($D/util/stop.sh $CURRENT)" "$COMPILETIME"
+        $D/util/error.sh "C#" "$AUTHOR" "$INPUT" "$($D/util/stop.sh $CURRENT)" "$COMPILETIME"
         exit
     fi
 
@@ -24,4 +25,4 @@ done < <(echo $IO_FILES | xargs -n2)
 
 TOTAL=$($D/util/stop.sh $START)
 
-$D/util/success.sh "C#" "$TOTAL" "$SOLUTION" "$TIMES" "$COMPILETIME"
+$D/util/success.sh "C#" "$TOTAL" "$AUTHOR" "$TIMES" "$COMPILETIME"
