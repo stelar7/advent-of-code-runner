@@ -1,11 +1,11 @@
 
 -- Day 2 --
 language   author          compile    total      average    status     
-C++        querijn         880ms      15ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/2/io/querijn.input
-Rust       mingweisamuel   1042ms     125ms      9ms        ✅
-Rust       molenzwiebel    1005ms     126ms      8ms        ✅
-Golang     slate           289ms      131ms      9ms        ✅
-Python3    kurainu         0ms        337ms      29ms       ✅
-NodeJS     stelar7         0ms        573ms      60ms       ✅
-C#         renkon          1910ms     600ms      51ms       ✅
-C#         aoshiw          1642ms     639ms      63ms       ✅
+Rust       molenzwiebel    988ms      125ms      11ms       ✅
+Golang     slate           274ms      130ms      9ms        ✅
+Rust       mingweisamuel   1014ms     135ms      9ms        ✅
+C++        querijn         824ms      137ms      8ms        ✅
+Python3    kurainu         0ms        345ms      32ms       ✅
+C#         renkon          1657ms     575ms      65ms       ✅
+NodeJS     stelar7         0ms        579ms      55ms       ✅
+C#         aoshiw          1499ms     619ms      64ms       ✅
