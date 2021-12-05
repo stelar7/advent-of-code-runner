@@ -1,21 +1,61 @@
-﻿int x = 0, y = 0, z = 0;
-string s;
-while ((s = Console.ReadLine()) != null)
+﻿using renkon;
+
+long DoPartA()
 {
-    switch (s[0])
+    var horizontalAxis = 0;
+    var verticalAxis = 0;
+
+    var handlers = new Dictionary<string, Action<int>>
     {
-        case 'f':
-            var c = s[8] - '0';
-            x += c;
-            z += y * c;
-            break;
-        case 'd':
-            y += s[5] - '0';
-            break;
-        case 'u':
-            y -= s[3] - '0';
-            break;
-    }
+        ["forward"] = (n) => horizontalAxis += n,
+        ["down"] = (n) => verticalAxis += n,
+        ["up"] = (n) => verticalAxis -= n,
+    };
+
+    return ProcessCommands(handlers, "2", ref horizontalAxis, ref verticalAxis);
 }
 
-Console.WriteLine(x * y + "\n" + x * z);
+long DoPartB()
+{
+    var aimValue = 0;
+    var horizontalAxis = 0;
+    var verticalAxis = 0;
+
+    var handlers = new Dictionary<string, Action<int>>
+    {
+        ["forward"] = (n) =>
+        {
+            horizontalAxis += n;
+            verticalAxis += aimValue * n;
+        },
+        ["down"] = (n) => aimValue += n,
+        ["up"] = (n) => aimValue -= n,
+    };
+
+    return ProcessCommands(handlers, "2", ref horizontalAxis, ref verticalAxis);
+}
+
+long ProcessCommands(
+    IDictionary<string, Action<int>> commandHandlers,
+    string inputName,
+    ref int horizontalAxis,
+    ref int verticalAxis)
+{
+    var commands = Utils.InputToStringArray(inputName);
+
+    foreach (var command in commands)
+    {
+        var (name, value) = GetCommandData(command);
+        commandHandlers[name].Invoke(value);
+    }
+
+    return horizontalAxis * verticalAxis;
+}
+
+(string, int) GetCommandData(string command)
+{
+    var splitStr = command.Split(" ");
+    return (splitStr[0], int.Parse(splitStr[1]));
+}
+
+Console.WriteLine(DoPartA() + "\n" + DoPartB());
