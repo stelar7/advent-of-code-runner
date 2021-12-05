@@ -48,6 +48,22 @@ jobs:
           sudo rm -rf /var/lib/apt/lists/*;
           sudo apt-get autoremove -yqq;
 
+      - name: Print versions
+        run: |
+          uname -a
+          bash --version
+          cargo --version
+          cmake --version
+          dotnet --version
+          gcc --version
+          go version
+          java --version
+          mono --version=number
+          node --version
+          python3 --version
+          rustc --version
+          ruby --version
+
       - name: Run tests
         run: |
           make test YEAR=2021 DAY=1;
