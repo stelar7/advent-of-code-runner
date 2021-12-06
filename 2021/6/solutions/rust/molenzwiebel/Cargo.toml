@@ -1,0 +1,17 @@
+[package]
+name = "molenzwiebel"
+version = "0.1.0"
+edition = "2018"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+unroll = "0.1.5"
+
+[profile.release]
+opt-level = 3
+panic = "abort"
+lto = true
+
+[[bin]]
+name = "out"
+path = "src/main.rs"
