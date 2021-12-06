@@ -4,6 +4,8 @@
 #include <fstream>
 #include <cassert>
 #include <cstdint>
+#include <cstring>
+#include <iostream>
 
 #if defined(_DEBUG)
 #define ASS(a) assert(a)
@@ -76,8 +78,8 @@ int main(int argc, char* argv[])
 	double time_taken = std::chrono::duration<double>(end - start).count();
 	printf("Total: %3.2f sec\nAvg: %5.3f ms per run\n\n", time_taken, (time_taken / (double)runs) * 1000.0);
 
-	printf("%llu\n", result1);
-	printf("%llu\n", result2);
+	std::cout << result1 << std::endl;
+	std::cout << result2 << std::endl;
 }
 
 #else
@@ -86,8 +88,8 @@ int main(int argc, char* argv[])
 {
 	func(argv[1]);
 
-	printf("%llu\n", result1);
-	printf("%llu\n", result2);
+	std::cout << result1 << std::endl;
+	std::cout << result2 << std::endl;
 	return 0;
 }
 
