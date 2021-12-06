@@ -1,10 +1,10 @@
 
 -- Day 3 --
 language   author          compile    total      average    status     
-Rust       molenzwiebel    1144ms     94ms       8ms        ✅
-C++        querijn         1573ms     101ms      9ms        ✅
-Golang     slate           262ms      101ms      8ms        ✅
-Rust       mingweisamuel   4990ms     102ms      10ms       ✅
-Python3    kurainu         0ms        286ms      35ms       ✅
-NodeJS     stelar7         0ms        537ms      55ms       ✅
-C#         renkon          1638ms     615ms      75ms       ✅
+C++        querijn         2049ms     119ms      11ms       ✅
+Rust       mingweisamuel   6457ms     119ms      11ms       ✅
+Rust       molenzwiebel    1391ms     126ms      11ms       ✅
+Golang     slate           363ms      129ms      13ms       ✅
+Python3    kurainu         0ms        337ms      34ms       ✅
+C#         renkon          2082ms     798ms      105ms      ✅
+NodeJS     stelar7         0ms        851ms      62ms       ✅
