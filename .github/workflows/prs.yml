@@ -7,7 +7,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
           fetch-depth: 0
 
       - name: Install NodeJS@16
@@ -41,10 +40,16 @@ jobs:
           sudo apt update;
           sudo apt install mono-complete dotnet-sdk-6.0 -yqq;
 
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: nightly
+
       - name: Install other compilers
         run: |
           sudo apt-get update;
-          sudo apt-get install -yqq --no-install-recommends cargo openjdk-17-jdk golang perl nodejs php-cli python3 ruby rustc;
+          sudo apt-get install -yqq --no-install-recommends openjdk-17-jdk golang perl nodejs php-cli python3 ruby;
           sudo rm -rf /var/lib/apt/lists/*;
           sudo apt-get autoremove -yqq;
 
