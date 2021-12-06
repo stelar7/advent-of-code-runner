@@ -1,5 +1,6 @@
 
 -- Day 6 --
 language   author          compile    total      average    status     
-C++        querijn         840ms      46ms       7ms        ✅
-NodeJS     stelar7         0ms        167ms      48ms       ✅
+C++        querijn         850ms      61ms       8ms        ✅
+NodeJS     stelar7         0ms        226ms      50ms       ✅
+C#         aoshiw          1524ms     272ms      59ms       ✅
