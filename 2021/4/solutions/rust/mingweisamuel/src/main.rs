@@ -10,8 +10,7 @@ pub struct Bingo<const N: usize> {
     col_counts: [usize; N],
 }
 impl<const N: usize> Bingo<N> {
-    pub fn new(grid: [[usize; N]; N]) -> Self {
-        let sum: usize = grid.iter().map(|row| row.iter().sum::<usize>()).sum();
+    pub fn new(sum: usize) -> Self {
         Self {
             bingo: false,
             sum,
@@ -65,7 +64,7 @@ fn main() {
         .into_iter()
         .enumerate()
         .map(|(board_idx, chunk)| {
-            let mut grid = [[0; N]; N];
+            let mut sum = 0;
             for (r, line) in chunk.enumerate() {
                 for (c, x) in line
                     .split_whitespace()
@@ -76,12 +75,12 @@ fn main() {
                     })
                     .enumerate()
                 {
-                    grid[r][c] = x;
+                    sum += x;
                     // Build index:
                     index.entry(x).or_default().push(Index { board_idx, r, c });
                 }
             }
-            Bingo::new(grid)
+            Bingo::new(sum)
         })
         .collect();
 
