@@ -10,5 +10,6 @@ $D/../../lang/node.sh			    "$D/solutions/node/stelar7/main.mjs"		"$D/io/*"
 $D/../../lang/dotnet_c_sharp.sh		    "$D/solutions/dotnet_c_sharp/aoshiw"	    "$D/io/*"
 $D/../../lang/cargo_rust.sh			"$D/solutions/rust/molenzwiebel"	        "$D/io/*"
 $D/../../lang/dotnet_c_sharp.sh			"$D/solutions/dotnet_c_sharp/renkon"		"$D/io/*"
+$D/../../lang/perl.sh				"$D/solutions/perl/slate/day6.pl"		"$D/io/*"
 
 echo ""
