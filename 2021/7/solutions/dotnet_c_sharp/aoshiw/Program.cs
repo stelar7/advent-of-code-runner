@@ -2,7 +2,7 @@ var span = Console.In.ReadToEnd().AsSpan().Trim();
 
 var nums = new List<int>();
 int min = int.MaxValue, max = int.MinValue;
-foreach (var item in span.EnumerateSlices(","))
+foreach (var item in new SpanSliceEnumerator(span, ","))
 {
     var num = int.Parse(item);
     if (num < min)
