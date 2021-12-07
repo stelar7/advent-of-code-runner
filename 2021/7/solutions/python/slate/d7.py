@@ -23,7 +23,7 @@ for i in median:
     elif gold > int(i):
         dist = gold - int(i)
         fuel += dist
-    #print(i, dist)
+
 
 print(fuel)
 
@@ -33,7 +33,7 @@ for med in median:
     gold += med
     gold_counter += 1
 
-gold = int(round(gold // gold_counter))
+gold = round((gold * 999 / gold_counter) / 1000)
 
 fuel = 0
 for i in median:
