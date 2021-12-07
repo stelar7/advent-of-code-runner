@@ -33,6 +33,10 @@ fn parse_fast(input: &mut impl Iterator<Item = u8>) -> Option<usize> {
     let mut num = 0;
 
     if let Some(b) = input.next() {
+        if b < b'0' || b > b'9' {
+            return None;
+        }
+
         num += (b - b'0') as usize;
     } else {
         return None;
@@ -40,7 +44,7 @@ fn parse_fast(input: &mut impl Iterator<Item = u8>) -> Option<usize> {
 
     for _ in 0..=2 {
         if let Some(b) = input.next() {
-            if b == b',' {
+            if b < b'0' || b > b'9' {
                 return Some(num);
             }
 
