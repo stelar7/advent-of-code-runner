@@ -1,3 +1,4 @@
 
 -- Day 7 --
 language   author          compile    total      average    status     
+Python3    slate           0ms        87ms       73ms       ✅
