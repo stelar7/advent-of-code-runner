@@ -1,5 +1,5 @@
 
 -- Day 7 --
 language   author          compile    total      average    status     
-Python3    slate           0ms        26ms                  ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/7/io/example.input
-NodeJS     stelar7         0ms        301ms      61ms       ✅
+Rust       mingweisamuel   1261ms     76ms       10ms       ✅
+NodeJS     stelar7         0ms        474ms      60ms       ✅
