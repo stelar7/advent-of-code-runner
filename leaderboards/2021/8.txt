@@ -1,3 +1,4 @@
 
 -- Day 8 --
 language   author          compile    total      average    status     
+NodeJS     stelar7         0ms        237ms      57ms       ✅
