@@ -34,3 +34,23 @@ foreach (var item in span.EnumerateLines())
 }
 Console.WriteLine(part1);
 Console.WriteLine(part2);
+
+static int ToNumber(ReadOnlySpan<char> span)
+{
+    int num = 0;
+    foreach (var item in span)
+    {
+        num |= 1 << item switch
+        {
+            'a' => 1,
+            'b' => 2,
+            'c' => 3,
+            'd' => 4,
+            'e' => 5,
+            'f' => 6,
+            'g' => 7,
+            _ => throw new ArgumentException(null, nameof(span))
+        };
+    }
+    return num;
+}
