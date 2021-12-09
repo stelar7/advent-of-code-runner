@@ -1,13 +1,10 @@
-use std::collections::HashMap;
 use std::io::BufRead;
 
-const SEGS: usize = 7;
-
-fn parse_segs(letters: &str) -> [bool; SEGS] {
-    let mut segs = [false; SEGS];
+fn parse_segs(letters: &str) -> u8 {
+    let mut segs = 0;
     for letter in letters.bytes() {
         let i = letter - b'a';
-        segs[i as usize] = true;
+        segs |= 0b1 << i;
     }
     segs
 }
@@ -18,89 +15,57 @@ fn main() {
         .lines()
         .map(|line| line.expect("Failed to read line as UTF-8."))
         .map(|line| {
-            let mut segs_2_digit: HashMap<[bool; SEGS], u8> = Default::default();
+            let mut segs_known = [0_u8; 10];
 
             let (ten_digits, four_digits) =
                 line.split_once(" | ").expect("Bad syntax: missing bar.");
 
-            let segs_list = ten_digits
+            let mut segs_unknown = ten_digits
                 .split(' ')
-                .map(|letters| {
-                    let segs = parse_segs(letters);
-                    match letters.len() {
-                        2 => segs_2_digit.insert(segs, 1),
-                        4 => segs_2_digit.insert(segs, 4),
-                        3 => segs_2_digit.insert(segs, 7),
-                        7 => segs_2_digit.insert(segs, 8),
-                        _ => None,
+                .map(parse_segs)
+                .filter(|segs| {
+                    match segs.count_ones() {
+                        2 => segs_known[1] = *segs,
+                        4 => segs_known[4] = *segs,
+                        3 => segs_known[7] = *segs,
+                        7 => segs_known[8] = *segs,
+                        _ => return true,
                     };
-                    segs
+                    false
                 })
                 .collect::<Vec<_>>();
 
-            let segs_bitcounts = segs_list
-                .iter()
-                .map(|bool_arr| bool_arr.map(|b| b as u8))
-                .fold([0; SEGS], |mut a, b| {
-                    for i in 0..SEGS {
-                        a[i] += b[i];
+            segs_unknown.retain(|&segs| {
+                if segs_known[4] == segs & segs_known[4] {
+                    segs_known[9] = segs;
+                    false
+                } else if segs_known[7] == segs & segs_known[7] {
+                    match segs.count_ones() {
+                        6 => segs_known[0] = segs,
+                        5 => segs_known[3] = segs,
+                        _ => unreachable!(),
                     }
-                    a
-                });
-
-            let mut seg_occ_4 = 0;
-            let mut seg_occ_6 = 0;
-            let mut seg_occ_8 = 0;
-            #[allow(clippy::needless_range_loop)]
-            for i in 0..SEGS {
-                match segs_bitcounts[i] {
-                    4 => seg_occ_4 = i,
-                    6 => seg_occ_6 = i,
-                    8 => seg_occ_8 = i,
-                    _ => (),
-                };
-            }
-
-            println!("{:?}", segs_bitcounts);
-
-            for segs in segs_list.iter() {
-                // 0 1 1
-                if !segs[seg_occ_6] && segs[seg_occ_8] && segs[seg_occ_4] {
-                    segs_2_digit.insert(*segs, 2);
+                    false
+                } else if 6 == segs.count_ones() {
+                    segs_known[6] = segs;
+                    false
+                } else {
+                    true
                 }
-                // 1 0 1
-                else if segs[seg_occ_6] && !segs[seg_occ_8] && segs[seg_occ_4] {
-                    segs_2_digit.insert(*segs, 6);
-                }
-                // 1 0 0
-                else if segs[seg_occ_6] && !segs[seg_occ_8] && !segs[seg_occ_4] {
-                    segs_2_digit.insert(*segs, 5);
-                }
-                // Collisions
-                else if !segs_2_digit.contains_key(segs) {
-                    // 1 1 1
-                    if segs[seg_occ_6] && segs[seg_occ_8] && segs[seg_occ_4] {
-                        segs_2_digit.insert(*segs, 0);
-                    }
-                    // 0 1 0
-                    else if !segs[seg_occ_6] && segs[seg_occ_8] && !segs[seg_occ_4] {
-                        segs_2_digit.insert(*segs, 3);
-                    }
-                    // 1 1 0
-                    else if segs[seg_occ_6] && segs[seg_occ_8] && !segs[seg_occ_4] {
-                        segs_2_digit.insert(*segs, 9);
-                    }
+            });
+            for segs in segs_unknown {
+                if 5 == (segs_known[6] & segs).count_ones() {
+                    segs_known[5] = segs;
+                } else {
+                    segs_known[2] = segs;
                 }
             }
-
-            let mut digits = segs_2_digit.iter().map(|(a, b)| (*b, *a)).collect::<Vec<_>>();
-            digits.sort_unstable();
-            println!("{:?}", digits);
+            assert!(!segs_known.contains(&0));
 
             let output_digits = four_digits
                 .split(' ')
                 .map(parse_segs)
-                .map(|segs| *segs_2_digit.get(&segs).unwrap())
+                .map(|segs| segs_known.iter().position(|&s| s == segs).unwrap())
                 .collect::<Vec<_>>();
             output_digits
         })
@@ -112,7 +77,6 @@ fn main() {
             let number = output_digits
                 .iter()
                 .fold(0_usize, |a, b| 10 * a + (*b as usize));
-            println!("{}", number);
             (count, number)
         })
         .fold((0, 0), |a, b| (a.0 + b.0, a.1 + b.1));
