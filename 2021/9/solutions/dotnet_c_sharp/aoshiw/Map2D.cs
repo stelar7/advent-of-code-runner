@@ -8,7 +8,7 @@ using System.Drawing;
 /// Just 2D Array. because why not?
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class Map2D<T> : IEnumerable<T>
+public class Map2D<T>
 {
     T[][] _array;
     public int Row { get; private set; }
