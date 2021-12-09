@@ -10,9 +10,9 @@ foreach (var item in span.EnumerateLines())
 {
     map.AddRow(item);
 }
-for (Point point = new(); point.X < map.Row; point.X++)
+for (Point point = new(); point.X < map.Column; point.X++)
 {
-    for (point.Y = 0; point.Y < map.Column; point.Y++)
+    for (point.Y = 0; point.Y < map.Row; point.Y++)
     {
         var isNotBreak = true;
         foreach (var item in PointOffset)
@@ -50,7 +50,7 @@ int Rec(int r, int c, Map2D<char> map)
 {
     var sum = 0;
     var tack = new Stack<Point>();
-    tack.Push(new(r, c));
+    tack.Push(new(c, r));
     while (tack.TryPop(out var point))
     {
         foreach (var item in PointOffset)
