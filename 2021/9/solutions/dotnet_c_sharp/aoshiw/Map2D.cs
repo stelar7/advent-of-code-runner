@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 
-
-/// <summary>
-/// Just 2D Array. because why not?
-/// </summary>
-/// <typeparam name="T"></typeparam>
 public class Map2D<T>
 {
     T[][] _array;
@@ -22,15 +14,15 @@ public class Map2D<T>
 
     public T this[Point point]
     {
-        get => this[point.X, point.Y];
-        set => this[point.X, point.Y] = value;
+        get => this[point.Y, point.X];
+        set => this[point.Y, point.X] = value;
     }
 
     public Map2D()
     {
         _array = new T[10][];
     }
-    
+
     public bool IsInRange(Point point) => point.X.IsInRange(0, Column) && point.Y.IsInRange(0, Row);
 
     public void AddRow(ReadOnlySpan<T> row) => AddRow(row, x => x);
@@ -53,7 +45,7 @@ public class Map2D<T>
 
     public IEnumerable<Point> GetPointEnumerator()
     {
-        var p= new Point();
+        var p = new Point();
         for (; p.Y < Row; p.Y++)
         {
             for (p.X = 0; p.X < Column; p.X++)
