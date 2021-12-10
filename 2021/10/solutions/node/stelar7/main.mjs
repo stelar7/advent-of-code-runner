@@ -17,13 +17,6 @@ function isMatching(expected, actual) {
     if (expected == "<") return ">" == actual;
 }
 
-function invert(c) {
-    if (c == "(") return ")";
-    if (c == "[") return "]";
-    if (c == "{") return "}";
-    if (c == "<") return ">";
-}
-
 const incompleteLines = [];
 const invalidChars = [];
 input.forEach(line => {
@@ -58,12 +51,11 @@ console.log(score);
 
 const autocompleteScores = incompleteLines.map(n => {
         return n.reverse()
-            .map(c => invert(c))
             .map(c => {
-                if (c == ")") return 1;
-                if (c == "]") return 2;
-                if (c == "}") return 3;
-                if (c == ">") return 4;
+                if (c == "(") return 1;
+                if (c == "[") return 2;
+                if (c == "{") return 3;
+                if (c == "<") return 4;
             })
             .reduce((a, b) => (a * 5) + b, 0);
     })
