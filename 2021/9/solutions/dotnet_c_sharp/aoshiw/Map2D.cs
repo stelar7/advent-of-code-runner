@@ -30,6 +30,8 @@ public class Map2D<T>
     {
         _array = new T[10][];
     }
+    
+    public bool IsInRange(Point point) => point.X.IsInRange(0, Column) && point.Y.IsInRange(0, Row);
 
     public void AddRow(ReadOnlySpan<T> row) => AddRow(row, x => x);
 
@@ -47,5 +49,17 @@ public class Map2D<T>
             _array[Row][i] = func(row[i]);
         }
         Row++;
+    }
+
+    public IEnumerable<Point> GetPointEnumerator()
+    {
+        var p= new Point();
+        for (; p.Y < Row; p.Y++)
+        {
+            for (p.X = 0; p.X < Column; p.X++)
+            {
+                yield return p;
+            }
+        }
     }
 }

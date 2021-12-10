@@ -10,53 +10,69 @@ foreach (var item in span.EnumerateLines())
 {
     map.AddRow(item);
 }
-for (Point point = new(); point.X < map.Column; point.X++)
+foreach (var point in map.GetPointEnumerator())
 {
-    for (point.Y = 0; point.Y < map.Row; point.Y++)
+    var isNotBreak = true;
+    foreach (var item in PointOffset)
     {
-        var isNotBreak = true;
-        foreach (var item in PointOffset)
+        var newPoint = point + item;
+        if (map.IsInRange(newPoint) && map[point] >= map[newPoint])
         {
-            var newPoint = point + item;
-            if (newPoint.X.IsInRange(0, map.Row) && newPoint.Y.IsInRange(0, map.Column) && map[point] >= map[newPoint])
-            {
-                isNotBreak = false;
-                break;
-            }
-        }
-        if (isNotBreak)
-        {
-            part1 += (int)char.GetNumericValue(map[point]) + 1;
+            isNotBreak = false;
+            break;
         }
     }
+    if (isNotBreak)
+    {
+        sum += (int)char.GetNumericValue(map[point]) + 1;
+    }
 }
+
 Console.WriteLine(part1);
 Span<int> max = stackalloc int[3];
-for (int r = 0; r < map.Row; r++)
+foreach (var point in map.GetPointEnumerator())
 {
-    for (int c = 0; c < map.Column; c++)
+    if (map[point] != '9')
     {
-        var val = Rec(r, c, map);
+        var val = Rec(point, map);
         if (val > max[0])
         {
             max[0] = val;
             max.Sort();
         }
     }
+
+}
+foreach (var point in map.GetPointEnumerator())
+{
+    var isNotBreak = true;
+    foreach (var item in PointOffset)
+    {
+        var newPoint = point + item;
+        if (map.IsInRange(newPoint) && map[point] >= map[newPoint])
+        {
+            isNotBreak = false;
+            break;
+        }
+    }
+    if (isNotBreak)
+    {
+        sum += (int)char.GetNumericValue(map[point]) + 1;
+    }
 }
 Console.WriteLine(max[0] * max[1] * max[2]);
 
-int Rec(int r, int c, Map2D<char> map)
+static int Rec(Point point, Map2D<char> map)
 {
     var sum = 0;
     var tack = new Stack<Point>();
-    tack.Push(new(c, r));
-    while (tack.TryPop(out var point))
+    tack.Push(point);
+    while (tack.TryPop(out point))
     {
         foreach (var item in PointOffset)
         {
             var newPoint = point + item;
-            if (newPoint.X.IsInRange(0, map.Row) && newPoint.Y.IsInRange(0, map.Column) && map[newPoint] != '9')
+            if (map.IsInRange(newPoint) && map[newPoint] != '9')
             {
                 sum++;
                 tack.Push(newPoint);
