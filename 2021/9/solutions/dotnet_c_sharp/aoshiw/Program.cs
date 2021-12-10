@@ -24,7 +24,7 @@ foreach (var point in map.GetPointEnumerator())
     }
     if (isNotBreak)
     {
-        sum += (int)char.GetNumericValue(map[point]) + 1;
+        part1 += (int)char.GetNumericValue(map[point]) + 1;
     }
 }
 
@@ -41,28 +41,10 @@ foreach (var point in map.GetPointEnumerator())
             max.Sort();
         }
     }
-
-}
-foreach (var point in map.GetPointEnumerator())
-{
-    var isNotBreak = true;
-    foreach (var item in PointOffset)
-    {
-        var newPoint = point + item;
-        if (map.IsInRange(newPoint) && map[point] >= map[newPoint])
-        {
-            isNotBreak = false;
-            break;
-        }
-    }
-    if (isNotBreak)
-    {
-        sum += (int)char.GetNumericValue(map[point]) + 1;
-    }
 }
 Console.WriteLine(max[0] * max[1] * max[2]);
 
-static int Rec(Point point, Map2D<char> map)
+int Rec(Point point, Map2D<char> map)
 {
     var sum = 0;
     var tack = new Stack<Point>();
