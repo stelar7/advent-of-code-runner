@@ -46,29 +46,28 @@ input.forEach(line => {
     incompleteLines.push(openList);
 });
 
-const score = invalidChars.reduce((o, n) => {
-    let score = 0;
-    if (n == ")") score = 3;
-    if (n == "]") score = 57;
-    if (n == "}") score = 1197;
-    if (n == ">") score = 25137;
-    return o + score;
-}, 0);
+const score = invalidChars.map(c => {
+        if (c == ")") return 3;
+        if (c == "]") return 57;
+        if (c == "}") return 1197;
+        if (c == ">") return 25137;
+    })
+    .reduce((o, n) => o + n, 0);
 
 console.log(score);
 
 const autocompleteScores = incompleteLines.map(n => {
         return n.reverse()
             .map(c => invert(c))
-            .reduce((a, b) => {
-                let score = 0;
-                if (b == ")") score = 1;
-                if (b == "]") score = 2;
-                if (b == "}") score = 3;
-                if (b == ">") score = 4;
-                return (a * 5) + score;
-            }, 0);
+            .map(c => {
+                if (c == ")") return 1;
+                if (c == "]") return 2;
+                if (c == "}") return 3;
+                if (c == ">") return 4;
+            })
+            .reduce((a, b) => (a * 5) + b, 0);
     })
     .sort((a, b) => b - a);
 
-console.log(autocompleteScores[autocompleteScores.length / 2 -1]);
+const centerpoint = (autocompleteScores.length / 2) - 1;
+console.log(autocompleteScores[centerpoint]);
