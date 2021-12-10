@@ -1,8 +1,8 @@
 
 -- Day 9 --
 language   author          compile    total      average    status     
-Rust       molenzwiebel    14223ms    96ms       9ms        ✅
-Rust       mingweisamuel   1658ms     103ms      12ms       ✅
-C#         aoshiw          1758ms     331ms                 ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/9/io/example.input
-C#         renkon          1873ms     533ms      76ms       ✅
-NodeJS     stelar7         0ms        1030ms     185ms      ✅
+C#         aoshiw          1778ms     9ms                   ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/9/io/aoshiw.input
+Rust       molenzwiebel    15313ms    102ms      12ms       ✅
+Rust       mingweisamuel   1789ms     108ms      12ms       ✅
+C#         renkon          1968ms     539ms      81ms       ✅
+NodeJS     stelar7         0ms        1063ms     189ms      ✅
