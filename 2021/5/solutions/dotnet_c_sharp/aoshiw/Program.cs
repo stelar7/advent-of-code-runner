@@ -61,7 +61,6 @@ foreach (var item in m)
     else if (item.Item2 > 1)
         part2++;
 }
-return (part1, part2);
 
 Console.WriteLine(part1);
 Console.WriteLine(part2);
