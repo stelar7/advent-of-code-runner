@@ -41,7 +41,6 @@ for (let y = 0; y < grid.length; y++) {
 }
 console.log(riskValue + lowPoints.length);
 
-
 function appendNeighbours(holder, x, y) {
     if (y < 0 || y >= grid.length) return;
     if (x < 0 || x >= grid[y].length) return;
