@@ -58,7 +58,7 @@ foreach (var item in m)
         part1++;
         part2++;
     }
-    else if (item.Item2 > 1)
+    else if ((item.Item1 + item.Item2) > 1)
         part2++;
 }
 
