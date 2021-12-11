@@ -4,7 +4,7 @@ var m = new (int, int)[1000, 1000];
 Span<int> arr = stackalloc int[4];
 foreach (var item in span.EnumerateLines())
 {
-    var enumerator = item.EnumerateSlices(",-> ");
+    var enumerator = new SpanSliceEnumerator(item, ",-> ");
     for (int i = 0; enumerator.MoveNext(); i++)
     {
         arr[i] = int.Parse(enumerator.Current);
