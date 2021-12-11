@@ -1,5 +1,6 @@
 
 -- Day 10 --
 language   author          compile    total      average    status     
-NodeJS     stelar7         0ms        174ms      51ms       ✅
-C#         aoshiw          1432ms     214ms      61ms       ✅
+Rust       molenzwiebel    11827ms    57ms       7ms        ✅
+NodeJS     stelar7         0ms        236ms      55ms       ✅
+C#         aoshiw          1517ms     290ms      64ms       ✅
