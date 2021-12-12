@@ -10,5 +10,6 @@ $D/../../lang/cargo_rust.sh         "$D/solutions/rust/molenzwiebel"           "
 $D/../../lang/dotnet_c_sharp.sh     "$D/solutions/dotnet_c_sharp/aoshiw"        "$D/io/*"
 $D/../../lang/python3.sh	          "$D/solutions/python/slate/d10.py"		      "$D/io/*"
 $D/../../lang/cargo_rust.sh         "$D/solutions/rust/mingweisamuel"           "$D/io/*"
+$D/../../lang/dotnet_c_sharp.sh	    "$D/solutions/dotnet_c_sharp/renkon"	"$D/io/*"
 
 echo ""
