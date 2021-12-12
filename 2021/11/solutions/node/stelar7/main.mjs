@@ -62,24 +62,33 @@ function doStep() {
 }
 
 let maxFlashes = grid.length * grid[0].length;
-let hasPrintedAt100 = false;
-let hasPrintedAtEqual = false;
+let atEqual = {
+    found: false,
+    value: 0,
+};
+let at100 = {
+    found: false,
+    value: 0,
+};
 let totalFlashes = 0;
 for (let i = 1; i < Number.MAX_SAFE_INTEGER; i++) {
     const stepFlashCount = doStep();
     totalFlashes += stepFlashCount;
 
-    if (i == 100) {
-        if (!hasPrintedAt100) console.log(totalFlashes);
-        hasPrintedAt100 = true;
+    if (i == 100 && !at100.found) {
+        at100.value = totalFlashes;
+        at100.found = true;
     }
 
-    if (stepFlashCount === maxFlashes) {
-        if (!hasPrintedAtEqual) console.log(i);
-        hasPrintedAtEqual = true;
+    if (stepFlashCount === maxFlashes && !atEqual.found) {
+        atEqual.value = i;
+        atEqual.found = true;
     }
 
-    if (hasPrintedAt100 && hasPrintedAtEqual) {
+    if (atEqual.found && at100.found) {
         break;
     }
 }
+
+console.log(at100.value);
+console.log(atEqual.value);
