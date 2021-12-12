@@ -1,19 +1,15 @@
 use std::cmp::min;
 use std::io::BufRead;
 
-const SIZE: usize = 10;
-
-fn main() {
+fn solve<I, const SIZE: usize>(lines: I)
+where
+    I: Iterator<Item = String>,
+{
     let mut grid = [[0_i8; SIZE]; SIZE];
 
     let mut big_flash = None;
 
-    for (r, line) in std::io::stdin()
-        .lock()
-        .lines()
-        .map(|line| line.expect("Failed to read line as UTF-8."))
-        .enumerate()
-    {
+    for (r, line) in lines.enumerate() {
         for (c, n) in line.bytes().map(|c| c - b'0').enumerate() {
             grid[r][c] = n.try_into().unwrap();
         }
@@ -72,4 +68,19 @@ fn main() {
     }
 
     println!("{}\n{}", flashes_100, big_flash.unwrap());
+}
+
+fn main() {
+    let stdin = std::io::stdin();
+    let mut lines = stdin
+        .lock()
+        .lines()
+        .map(|line| line.expect("Failed to read line as UTF-8."))
+        .peekable();
+
+    match lines.peek().unwrap().len() {
+        5 => solve::<_, 5>(lines),
+        10 => solve::<_, 10>(lines),
+        n => panic!("Cannot handle {}-size grid.", n),
+    }
 }
