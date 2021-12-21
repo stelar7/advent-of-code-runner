@@ -1,8 +1,8 @@
 
 -- Day 8 --
 language   author          compile    total      average    status     
-Rust       molenzwiebel    11294ms    94ms       9ms        ✅
-Rust       mingweisamuel   1271ms     97ms       9ms        ✅
-C#         aoshiw          1646ms     527ms      75ms       ✅
-NodeJS     stelar7         0ms        556ms      87ms       ✅
-C#         renkon          1596ms     11497ms    2084ms     ✅
+Rust       mingweisamuel   1301ms     97ms       8ms        ✅
+Rust       molenzwiebel    11096ms    99ms       9ms        ✅
+C#         aoshiw          1558ms     518ms      65ms       ✅
+NodeJS     stelar7         0ms        607ms      122ms      ✅
+C#         renkon          1570ms     11415ms    2066ms     ✅
