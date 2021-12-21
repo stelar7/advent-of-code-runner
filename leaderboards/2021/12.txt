@@ -1,5 +1,5 @@
 
 -- Day 12 --
 language   author          compile    total      average    status     
-Rust       mingweisamuel   1560ms     155ms      10ms       ✅
-NodeJS     stelar7         0ms        1872ms     64ms       ✅
+Rust       mingweisamuel   1564ms     147ms      10ms       ✅
+NodeJS     stelar7         0ms        1814ms     60ms       ✅
