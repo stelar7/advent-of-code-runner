@@ -1,6 +1,6 @@
 
 -- Day 11 --
 language   author          compile    total      average    status     
-Rust       mingweisamuel   1132ms     71ms       8ms        ✅
-C#         renkon          1560ms     359ms      70ms       ✅
-NodeJS     stelar7         0ms        385ms      76ms       ✅
+Rust       mingweisamuel   1140ms     70ms       8ms        ✅
+C#         renkon          1582ms     361ms      71ms       ✅
+NodeJS     stelar7         0ms        402ms      78ms       ✅
