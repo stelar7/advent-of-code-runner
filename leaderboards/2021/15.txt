@@ -1,5 +1,5 @@
 
 -- Day 15 --
 language   author          compile    total      average    status     
-Rust       mingweisamuel   3443ms     151ms                 ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/15/io/stelar7.input
-NodeJS     stelar7         0ms        11123ms    87ms       ✅
+Rust       mingweisamuel   4043ms     188ms                 ❌ /home/runner/work/advent-of-code-runner/advent-of-code-runner/2021/15/io/stelar7.input
+NodeJS     stelar7         0ms        12701ms    93ms       ✅
