@@ -1,4 +1,4 @@
 
 -- Day 18 --
 language   author          compile    total      average    status     
-Rust       mingweisamuel   1391ms     178ms      10ms       ✅
+Rust       mingweisamuel   1193ms     147ms      9ms        ✅
