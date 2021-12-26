@@ -1,0 +1,17 @@
+AB
+CD
+
+D < A
+B < C
+
+A  B
+AN AX
+
+C  D
+BN BX
+
+
+no_overlap = BX <= AN || AX <= BN
+overlap = BX > AN && AX > BN
+
+(hitting on one point does not count as overlap)
