@@ -1,0 +1,9 @@
+99999
+91119
+91919
+91919
+91919
+ ^ ^
+ A B
+
+Cheapest path from A to B is up around the loop.
