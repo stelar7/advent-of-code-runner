@@ -1,7 +1,7 @@
 ﻿using Kunc.AdventOfCode.Utils;
 
 var span = Console.In.ReadToEnd().AsSpan().Trim();
-const int count = 20;
+const int count = 50;
 var map = new List<char[]>();
 var temp = new List<char[]>();
 foreach (var item in span.EnumerateLines(2))
@@ -30,8 +30,6 @@ static char[] NewArray(int lenght)
     Array.Fill(arr, '.');
     return arr;
 }
-//https://www.reddit.com/r/adventofcode/comments/rkgmx9/2021_day_20_images_come_to_life/
-//span = ".......#...#.##....#.###.######....#.##..##.#....######.###.#......#.##..##.#....######.###.#....##.#...#.......###.#...#..........#.##..##.#....######.###.#....##.#...#.......###.#...#........##.#...#.......###.#...#.......#...............#..................#.##..##.#....######.###.#....##.#...#.......###.#...#........##.#...#.......###.#...#.......#...............#................##.#...#.......###.#...#.......#...............#...............#...............#...............................................";
 var c = '.';
 for (int i = 0; i < 2; i++)
 {
@@ -42,10 +40,10 @@ for (int i = 0; i < 2; i++)
             temp[y][x] = span[Get(map, x, y, c)];
         }
     }
-    c = span[(i & 1) == 0 ? 0 : 511];
+    c = span[c == '.' ? 0 : 511];
     Helper.Swap(ref map, ref temp);
 }
-return map.Sum(x => x.Count(x => x == '#'));
+Console.WriteLine(map.Sum(x => x.Count(x => x == '#')));
 for (int i = 0; i < 48; i++)
 {
     for (int y = 0; y < map.Count; y++)
@@ -55,10 +53,10 @@ for (int i = 0; i < 48; i++)
             temp[y][x] = span[Get(map, x, y, c)];
         }
     }
-    c = span[(i & 1) == 0 ? 0 : 511];
+    c = span[c == '.' ? 0 : 511];
     Helper.Swap(ref map, ref temp);
 }
-return map.Sum(x => x.Count(x => x == '#'));
+Console.WriteLine(map.Sum(x => x.Count(x => x == '#')));
 
 int Get(List<char[]> map, int x, int y, char c = '.')
 {
