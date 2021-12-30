@@ -1,7 +1,7 @@
 ﻿using Kunc.AdventOfCode.Utils;
 
 var span = Console.In.ReadToEnd().AsSpan().Trim();
-
+const int count = 20;
 var map = new List<char[]>();
 var temp = new List<char[]>();
 foreach (var item in span.EnumerateLines(2))
