@@ -1,4 +1,5 @@
 
 -- Day 25 --
 language   author          compile    total      average    status     
-Rust       mingweisamuel   1161ms     149ms      8ms        ✅
+Rust       mingweisamuel   1209ms     230ms      82ms       ✅
+C#         aoshiw          1743ms     351ms      121ms      ✅
