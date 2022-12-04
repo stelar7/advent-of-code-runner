@@ -3,91 +3,12 @@ on: [push, pull_request]
 jobs:
   run-tests:
     runs-on: ubuntu-latest
+    container: 
+      image: stelar7/advent-of-code-runner:2022
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Install NodeJS@18
-        uses: actions/setup-node@v2
-        with: 
-          node-version: 18
-
-      - name: Install essentials
-        run: |
-          sudo apt-get update;
-          sudo apt-get install -yqq --no-install-recommends build-essential git wget ca-certificates curl unzip ninja-build ccache gnupg apt-transport-https;
-          
-      - name: Install cmake
-        run: |
-          sudo apt remove --purge --auto-remove cmake; 
-          sudo apt update; 
-          sudo apt install -y software-properties-common lsb-release; 
-          sudo apt clean all; 
-          sudo wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null; 
-          sudo apt-add-repository "deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main"; 
-          sudo apt update; 
-          sudo apt install cmake -yqq;
-      
-      - name: Install Mono and .NET (C#)
-        run: |
-          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF;
-          echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list;
-          wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-          sudo dpkg -i packages-microsoft-prod.deb
-          rm packages-microsoft-prod.deb
-          sudo apt update;
-          sudo apt install mono-complete dotnet-sdk-6.0 -yqq;
-
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: nightly
-      
-      - name: Elixir setup
-        uses: erlef/setup-beam@v1
-        with:
-          elixir-version: '1.14.0'
-          otp-version: '25.1.0'
-
-
-      - name: Install other compilers
-        run: |
-          sudo apt-get update;
-          sudo apt-get install -yqq --no-install-recommends openjdk-17-jdk golang perl nodejs php-cli python3 ruby;
-          sudo rm -rf /var/lib/apt/lists/*;
-          sudo apt-get autoremove -yqq;
-
-      - name: Install 05AB1E
-        run: |
-          git clone https://github.com/Adriandmen/05AB1E.git;
-          cd 05AB1E;
-          (yes | PATH=/usr/bin:$PATH mix local.hex --force);
-          PATH=/usr/bin:$PATH mix deps.get;
-          (yes | PATH=/usr/bin:$PATH MIX_ENV=prod mix escript.build);
-          mv osabie /usr/local/bin/osabie;
-
-      - name: Print versions
-        run: |
-          uname -a
-          bash --version
-          cargo --version
-          cmake --version
-          dotnet --version
-          gcc --version
-          go version
-          java --version
-          mono --version=number
-          node --version
-          python3 --version
-          rustc --version
-          ruby --version
-          erlang --version
-          elixir --version
-
       - name: Run tests
+        shell: bash
         run: |
           make test YEAR=2022 DAY=1;
           make test YEAR=2022 DAY=2;
