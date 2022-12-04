@@ -44,3 +44,6 @@ RUN git clone https://github.com/Adriandmen/05AB1E.git && \
   PATH=/usr/bin:$PATH mix deps.get && \
   (yes | PATH=/usr/bin:$PATH MIX_ENV=prod mix escript.build) && \ 
   mv osabie /usr/local/bin/osabie;
+
+# 9. Create test folder
+RUN mkdir test;
