@@ -10,7 +10,7 @@ START=$($D/util/start.sh)
 while read INPUT OUTPUT; do
     CURRENT=$($D/util/start.sh)
 
-    cat $INPUT | timeout --signal=SIGKILL 20s node --harmony-top-level-await $SOLUTION | diff --strip-trailing-cr $OUTPUT -
+    cat $INPUT | timeout --signal=SIGKILL 20s node $SOLUTION | diff --strip-trailing-cr $OUTPUT -
     if [ $? -ne 0 ]; then
         $D/util/error.sh "NodeJS" "$SOLUTION" "$INPUT" "$($D/util/stop.sh $CURRENT)" "0"
         exit
