@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: stelar7/advent-of-code-runner:2022
+      volumes:
+        - "${{ github.workspace }}:/test"
 
     steps:
       - name: Run tests
