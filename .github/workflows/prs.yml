@@ -5,16 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: stelar7/advent-of-code-runner:2022
-      volumes:
-        - "${{ github.workspace }}:/test"
 
     steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - name: Run tests
         shell: bash
         run: |
-          ls -la;
-          cd /test;
-          ls -la;
           make test YEAR=2022 DAY=1;
           make test YEAR=2022 DAY=2;
           make test YEAR=2022 DAY=3;
