@@ -48,7 +48,6 @@ jobs:
 
       - name: Push new leaderboards
         if: always() && github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: actions/checkout@v3
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
