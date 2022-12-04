@@ -1,0 +1,6 @@
+
+> 2569
+-- Day 3 --
+language   author          compile    total      average    status     
+1a2
+NodeJS     stelar7         0ms        51ms                  ❌ /test/2022/3/io/stelar7.input
