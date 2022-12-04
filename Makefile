@@ -18,7 +18,7 @@ docker.test:
 	--network none \
 	--env YEAR=$(YEAR) \
 	--env DAY=$(DAY) \
-	-v $(pwd):/test \
+	-v $(shell pwd):/test \
 	$(DOCKER_TAG) \
 	/bin/bash -c "cd /test && make test && exit"
 
