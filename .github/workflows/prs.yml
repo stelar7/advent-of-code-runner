@@ -9,10 +9,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install NodeJS@16
+      - name: Install NodeJS@18
         uses: actions/setup-node@v2
         with: 
-          node-version: 16
+          node-version: 18
 
       - name: Install essentials
         run: |
@@ -49,9 +49,18 @@ jobs:
       - name: Install other compilers
         run: |
           sudo apt-get update;
-          sudo apt-get install -yqq --no-install-recommends openjdk-17-jdk golang perl nodejs php-cli python3 ruby;
+          sudo apt-get install -yqq --no-install-recommends openjdk-17-jdk golang perl nodejs php-cli python3 ruby erlang elixir;
           sudo rm -rf /var/lib/apt/lists/*;
           sudo apt-get autoremove -yqq;
+
+      - name: Install 05AB1E
+        run: |
+          git clone https://github.com/Adriandmen/05AB1E.git;
+          cd 05AB1E;
+          (yes | PATH=/usr/bin:$PATH mix local.hex --force);
+          PATH=/usr/bin:$PATH mix deps.get;
+          (yes | PATH=/usr/bin:$PATH MIX_ENV=prod mix escript.build);
+          mv osabie /usr/local/bin/osabie;
 
       - name: Print versions
         run: |
@@ -68,34 +77,36 @@ jobs:
           python3 --version
           rustc --version
           ruby --version
+          erlang --version
+          elixir --version
 
       - name: Run tests
         run: |
-          make test YEAR=2021 DAY=1;
-          make test YEAR=2021 DAY=2;
-          make test YEAR=2021 DAY=3;
-          make test YEAR=2021 DAY=4;
-          make test YEAR=2021 DAY=5;
-          make test YEAR=2021 DAY=6;
-          make test YEAR=2021 DAY=7;
-          make test YEAR=2021 DAY=8;
-          make test YEAR=2021 DAY=9;
-          make test YEAR=2021 DAY=10;
-          make test YEAR=2021 DAY=11;
-          make test YEAR=2021 DAY=12;
-          make test YEAR=2021 DAY=13;
-          make test YEAR=2021 DAY=14;
-          make test YEAR=2021 DAY=15;
-          make test YEAR=2021 DAY=16;
-          make test YEAR=2021 DAY=17;
-          make test YEAR=2021 DAY=18;
-          make test YEAR=2021 DAY=19;
-          make test YEAR=2021 DAY=20;
-          make test YEAR=2021 DAY=21;
-          make test YEAR=2021 DAY=22;
-          make test YEAR=2021 DAY=23;
-          make test YEAR=2021 DAY=24;
-          make test YEAR=2021 DAY=25;
+          make test YEAR=2022 DAY=1;
+          make test YEAR=2022 DAY=2;
+          make test YEAR=2022 DAY=3;
+          make test YEAR=2022 DAY=4;
+          make test YEAR=2022 DAY=5;
+          make test YEAR=2022 DAY=6;
+          make test YEAR=2022 DAY=7;
+          make test YEAR=2022 DAY=8;
+          make test YEAR=2022 DAY=9;
+          make test YEAR=2022 DAY=10;
+          make test YEAR=2022 DAY=11;
+          make test YEAR=2022 DAY=12;
+          make test YEAR=2022 DAY=13;
+          make test YEAR=2022 DAY=14;
+          make test YEAR=2022 DAY=15;
+          make test YEAR=2022 DAY=16;
+          make test YEAR=2022 DAY=17;
+          make test YEAR=2022 DAY=18;
+          make test YEAR=2022 DAY=19;
+          make test YEAR=2022 DAY=20;
+          make test YEAR=2022 DAY=21;
+          make test YEAR=2022 DAY=22;
+          make test YEAR=2022 DAY=23;
+          make test YEAR=2022 DAY=24;
+          make test YEAR=2022 DAY=25;
 
       - name: Check for failed tests
         run: |
