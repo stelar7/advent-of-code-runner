@@ -38,18 +38,20 @@ RUN apt-get update && apt-get install -yqq --no-install-recommends\
   && apt-get autoremove -yqq
 
 # 8. Install 05AB1E
-WORKDIR /src
 RUN git clone https://github.com/Adriandmen/05AB1E.git && \
-  git clone https://github.com/darrenks/golfscript.git && \
   cd 05AB1E && \
   (yes | PATH=/usr/bin:$PATH mix local.hex --force) && \
   PATH=/usr/bin:$PATH mix deps.get && \
   (yes | PATH=/usr/bin:$PATH MIX_ENV=prod mix escript.build) && \ 
   mv osabie /usr/local/bin/osabie && \
-  cd ../golfscript && \
-  chmod +x golfscript.rb && \
-  ln -s $(pwd)/golfscript.rb /usr/local/bin/golfscript
+  cd .. && rm -rf 05AB1E
 
+# 9. Install Golfscript
+RUN git clone https://github.com/darrenks/golfscript.git && \
+  cd golfscript && \
+  chmod +x golfscript.rb && \
+  mv golfscript.rb /usr/local/bin/golfscript && \
+  cd .. && rm -rf golfscript
 
 # 9. Create test folder
 RUN mkdir test;
