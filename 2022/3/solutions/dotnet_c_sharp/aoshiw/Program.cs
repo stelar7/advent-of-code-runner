@@ -1,4 +1,4 @@
-var span = Console.In.ReadToEnd().AsSpan().Trim();
+var span = Console.In.ReadToEnd().AsSpan().TrimEnd();
 int sum1 = 0, sum2 = 0;
 var enumerator = span.EnumerateLines();
 while (enumerator.MoveNext())

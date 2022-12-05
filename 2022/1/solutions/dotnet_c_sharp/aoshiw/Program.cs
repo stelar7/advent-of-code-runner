@@ -1,4 +1,4 @@
-var span = Console.In.ReadToEnd().AsSpan().Trim();
+var span = Console.In.ReadToEnd().AsSpan().TrimEnd();
 Span<int> maxCalories = stackalloc int[3];
 var calories = 0;
 foreach (var item in span.EnumerateLines())

@@ -1,3 +1,4 @@
+var span = Console.In.ReadToEnd().AsSpan().TrimEnd();
 var part1 = new List<List<char>>();
 var enumerator = span.EnumerateLines();
 while (enumerator.MoveNext() && !enumerator.Current.IsEmpty)

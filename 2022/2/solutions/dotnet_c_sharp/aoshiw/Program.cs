@@ -1,4 +1,4 @@
-var span = Console.In.ReadToEnd().AsSpan().Trim();
+var span = Console.In.ReadToEnd().AsSpan().TrimEnd();
 int point1 = 0, point2 = 0;
 var map1 = new int[,]
 {

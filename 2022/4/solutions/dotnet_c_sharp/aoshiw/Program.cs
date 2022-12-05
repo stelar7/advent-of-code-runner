@@ -1,3 +1,4 @@
+var span = Console.In.ReadToEnd().AsSpan().TrimEnd();
 int part1 = 0, part2 = 0;
 foreach (var item in span.EnumerateLines())
 {
