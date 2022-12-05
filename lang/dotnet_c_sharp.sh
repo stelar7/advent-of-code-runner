@@ -8,7 +8,7 @@ IO_FILES=$2
 COMPILETIME=$($D/dotnet_c_sharp_build.sh $SOLUTION)
 START=$($D/util/start.sh)
 
-EXECUTABLE="$SOLUTION/bin/Release/net6.0/$(basename $SOLUTION)"
+EXECUTABLE="$SOLUTION/bin/output/$(basename $SOLUTION)"
 AUTHOR="$SOLUTION/bin"
 
 while read INPUT OUTPUT; do
