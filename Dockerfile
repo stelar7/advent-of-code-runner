@@ -25,14 +25,14 @@ RUN apt remove --purge --auto-remove cmake; \
 # 6. Install Mono and .NET (C#)
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF; \
   echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | tee /etc/apt/sources.list.d/mono-official-stable.list; \
-  wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+  wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
   dpkg -i packages-microsoft-prod.deb; \
   rm packages-microsoft-prod.deb; \
   apt update; \
-  apt install -yqq mono-complete dotnet-sdk-6.0; 
+  apt install -yqq mono-complete dotnet-sdk-7.0; 
 
 # 7. Install all other compilers, from apt-get
-RUN apt-get update && apt-get install -yqq --no-install-recommends\
+RUN apt update && apt install -yqq --no-install-recommends \
   cargo elixir erlang openjdk-17-jdk golang nodejs php-cli python3 ruby rustc \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get autoremove -yqq
