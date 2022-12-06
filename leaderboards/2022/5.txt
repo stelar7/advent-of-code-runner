@@ -1,7 +1,4 @@
 
-< CMZ
-< MCD
 -- Day 5 --
 language   author          compile    total      average    status     
-1,2d0
-NodeJS     stelar7         0ms        53ms                  ❌ /__w/advent-of-code-runner/advent-of-code-runner/2022/5/io/example.input
+NodeJS     stelar7         0ms        144ms      61ms       ✅
