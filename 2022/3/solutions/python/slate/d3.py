@@ -30,7 +30,6 @@ for line in input:
 				already.append(new_char)
 				for j in range(len(priority)):
 					if new_char == priority[j]:
-						print(new_char, j)
 						total_pri_two += (j+1)
 						break
 						

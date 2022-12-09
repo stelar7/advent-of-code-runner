@@ -15,15 +15,13 @@ for line in input:
 	else:
 		cals.append(line.rstrip())
 
-print(max(total_cals))
-
 top_three = []
 
 for i in range(3):
 	top_three.append(max(total_cals))
 	total_cals.remove(max(total_cals))
 
-print(top_three)
+print(max(total_cals))
 
 total = sum(top_three)
 
