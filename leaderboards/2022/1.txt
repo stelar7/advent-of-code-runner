@@ -1,5 +1,5 @@
 
 -- Day 1 --
 language   author          compile    total      average    status     
-golfscript pseudonym117    0ms        519ms      111ms      ✅
-05AB1E     stelar7         0ms        1297ms     388ms      ✅
+golfscript pseudonym117    0ms        424ms      91ms       ✅
+05AB1E     stelar7         0ms        1059ms     354ms      ✅
