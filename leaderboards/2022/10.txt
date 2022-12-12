@@ -1,6 +1,6 @@
 
 > 
--- Day 8 --
+-- Day 10 --
 language   author          compile    total      average    status     
 7a8
-NodeJS     stelar7         0ms        61ms                  ❌ /__w/advent-of-code-runner/advent-of-code-runner/2022/10/io/example.input
+NodeJS     stelar7         0ms        62ms                  ❌ /__w/advent-of-code-runner/advent-of-code-runner/2022/10/io/example.input
