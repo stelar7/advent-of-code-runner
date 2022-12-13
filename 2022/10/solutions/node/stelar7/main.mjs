@@ -55,4 +55,4 @@ for (const element of lines) {
 }
 
 console.log(output);
-console.log(outputString);
+console.log(outputString.trim());
