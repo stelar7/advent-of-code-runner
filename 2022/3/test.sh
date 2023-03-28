@@ -8,5 +8,6 @@ printf "%-10s %-15s %-10s %-10s %-10s %-10s \n" "language" "author" "compile" "t
 $D/../../lang/node.sh                   "$D/solutions/node/stelar7/main.mjs"            "$D/io/*"
 $D/../../lang/golfscript.sh             "$D/solutions/golfscript/pseudonym117/day3.gs"  "$D/io/*"
 $D/../../lang/python3.sh		"$D/solutions/python/slate/d3.py"		"$D/io/*"
+$D/../../lang/cargo_rust.sh             "$D/solutions/rust/mingweisamuel"               "$D/io/*"
 
 echo ""
