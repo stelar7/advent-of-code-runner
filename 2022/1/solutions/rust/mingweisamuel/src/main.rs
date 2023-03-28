@@ -21,8 +21,9 @@ fn main() {
         .map(Reverse)
         .k_smallest(N)
         .collect();
-    let [Reverse(a), Reverse(b), Reverse(c)] = result[..] else {
+    if let [Reverse(a), Reverse(b), Reverse(c)] = result[..] {
+        println!("{}\n{}", a, a + b + c);
+    } else {
         panic!();
-    };
-    println!("{}\n{}", a, a + b + c);
+    }
 }

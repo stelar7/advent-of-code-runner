@@ -25,8 +25,11 @@ fn main() {
         .lines()
         .map(|line| {
             let line = line.expect("Failed to read line as UTF-8.");
-            let &[a, b' ', x] = line.as_bytes() else { panic!(); };
-            [a - b'A', x - b'X']
+            if let &[a, b' ', x] = line.as_bytes() {
+                [a - b'A', x - b'X']
+            } else {
+                panic!();
+            }
         })
         .map(|[op, me]| {
             let p1 = 1 + (me as u32) + 3 * (((4 + me - op) as u32) % 3);
