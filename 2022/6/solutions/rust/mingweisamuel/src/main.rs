@@ -15,13 +15,24 @@ fn main() {
 
 fn unique_run_end(row: &[u8], len: usize) -> usize {
     let mut counts = row[0..len - 1].iter().copied().counts();
+    let mut duped_chars = counts.values().filter(|&&n| 1 < n).count();
     for (i, (&old, &new)) in row.iter().zip(&row[len - 1..]).enumerate() {
-        *counts.entry(new).or_default() += 1;
+        let count_new = counts.entry(new).or_default();
+        *count_new += 1;
+        if 2 == *count_new {
+            duped_chars += 1;
+        }
+
         // println!("{:#?}", counts.iter().map(|(&c, &count)| (c as char, count)).collect::<std::collections::HashMap<_, _>>());
-        if counts.values().all(|&n| n <= 1) {
+        if 0 == duped_chars {
             return i + len;
         }
-        *counts.entry(old).or_default() -= 1;
+
+        let count_old = counts.entry(old).or_default();
+        *count_old -= 1;
+        if 1 == *count_old {
+            duped_chars -= 1;
+        }
     }
     panic!();
 }
