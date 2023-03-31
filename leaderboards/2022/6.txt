@@ -1,6 +1,7 @@
 
 -- Day 6 --
 language   author          compile    total      average    status     
-Python3    slate           0ms        185ms      18ms       ✅
-NodeJS     stelar7         0ms        559ms      60ms       ✅
-golfscript pseudonym117    0ms        831ms      81ms       ✅
+Rust       mingweisamuel   3295ms     100ms      7ms        ✅
+Python3    slate           0ms        226ms      19ms       ✅
+NodeJS     stelar7         0ms        640ms      68ms       ✅
+golfscript pseudonym117    0ms        1074ms     87ms       ✅
