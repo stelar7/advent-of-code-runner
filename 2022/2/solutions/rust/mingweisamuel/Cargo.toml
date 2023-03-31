@@ -1,0 +1,15 @@
+[package]
+name = "mingweisamuel"
+version = "0.0.0"
+edition = "2021"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[profile.release]
+opt-level = 3
+panic = "abort"
+
+[[bin]]
+name = "out"
+path = "src/main.rs"
