@@ -9,8 +9,9 @@ function distance(a, b) {
     return Math.abs(a.x - b.x) + Math.abs(a.y - b.y)
 }
 
-function parseSensors(lines) {
+function parseSensors(lines, rowToCheck) {
     const sensors = [];
+    let rowBeacons = new Set();
     for (const line of lines) {
         const parts = line.split(":");
         const sensorString = parts[0].split(",");
@@ -31,12 +32,15 @@ function parseSensors(lines) {
         };
         sensor.radius = distance(sensor, beacon);
         sensors.push(sensor);
+        if (beaconY === rowToCheck) {
+            rowBeacons.add(beaconX);
+        }
     }
 
-    return sensors;
+    return [sensors, rowBeacons.size];
 }
 
-function parseIntervals(sensors) {
+function parseIntervals(sensors, beacons) {
     const intervals = [];
     for (const sensor of sensors) {
         const distanceToLine = sensor.radius - Math.abs(sensor.y - rowToCheck);
@@ -63,13 +67,7 @@ function parseIntervals(sensors) {
         }
     }
 
-    let intervalLength = finalIntervals[0].max + Math.abs(finalIntervals[0].min);
-
-    for (const sensor of sensors) {
-        if (sensor.y == rowToCheck) {
-            intervalLength--;
-        }
-    }
+    let intervalLength = finalIntervals.map(interval => interval.max - interval.min + 1).reduce((a, b) => a + b, 0);
     return intervalLength;
 }
 
@@ -87,28 +85,31 @@ function findFreeIntersect(maxDistance) {
 
     for (const first of diagonalOne) {
         for (const second of diagonalTwo) {
+
             const intersectA = Math.floor((second - first) / 2);
-            const intersectB = Math.floor((first + second) / 2);
-            const intersectPoint = {
-                x: intersectA,
-                y: intersectB
-            }
+            for (const intersectB of new Set([Math.floor((first + second) / 2), Math.ceil((first + second) / 2)])) {
 
-            if (!(intersectA > 0 && intersectA < maxDistance && intersectB > 0 && intersectB < maxDistance)) {
-                continue;
-            }
-
-            let bad = false;
-            for (const sensor of sensors) {
-                const outsideDistance = distance(intersectPoint, sensor);
-
-                if (outsideDistance <= sensor.radius) {
-                    bad = true;
+                const intersectPoint = {
+                    x: intersectA,
+                    y: intersectB
                 }
-            }
 
-            if (!bad) {
-                return intersectPoint;
+                if (!(intersectA > 0 && intersectA < maxDistance && intersectB > 0 && intersectB < maxDistance)) {
+                    continue;
+                }
+
+                let bad = false;
+                for (const sensor of sensors) {
+                    const outsideDistance = distance(intersectPoint, sensor);
+
+                    if (outsideDistance <= sensor.radius) {
+                        bad = true;
+                    }
+                }
+
+                if (!bad) {
+                    return intersectPoint;
+                }
             }
         }
     }
@@ -119,8 +120,8 @@ function findFreeIntersect(maxDistance) {
 const rowToCheck = 2000000;
 const intersectLimit = 4000000;
 
-const sensors = parseSensors(lines);
-console.log(parseIntervals(sensors));
+const [sensors, rowBeacons] = parseSensors(lines, rowToCheck);
+console.log(parseIntervals(sensors) - rowBeacons);
 
 const intersect = findFreeIntersect(intersectLimit);
 console.log(intersect.x * 4000000 + intersect.y);
