@@ -1,4 +1,5 @@
 
 -- Day 13 --
 language   author          compile    total      average    status     
-NodeJS     stelar7         0ms        224ms      82ms       ✅
+Rust       mingweisamuel   3115ms     35ms       6ms        ✅
+NodeJS     stelar7         0ms        254ms      64ms       ✅
