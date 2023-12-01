@@ -4,3 +4,4 @@
 **/obj
 **/*.class
 /.vscode
+/run_rust.bash
