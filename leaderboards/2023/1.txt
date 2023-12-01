@@ -1,4 +1,4 @@
 
 -- Day 1 --
 language   author          compile    total      average    status     
-C++        pseudonym117    749ms      5ms                   ❌ /__w/advent-of-code-runner/advent-of-code-runner/2023/1/io/pseudonym117.input
+C++        pseudonym117    753ms      5ms                   ❌ /__w/advent-of-code-runner/advent-of-code-runner/2023/1/io/pseudonym117.input
