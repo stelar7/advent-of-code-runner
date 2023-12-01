@@ -3,7 +3,7 @@ project(out)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-add_executable(out main.cpp)
+add_executable(out main.cpp day1.hpp util.hpp)
 set_target_properties(out PROPERTIES 
 	VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 	CXX_STANDARD 20
