@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: stelar7/advent-of-code-runner:2022
+    env:
+      PASSED_TESTS: 0
 
     steps:
       - name: Checkout source
@@ -44,7 +46,13 @@ jobs:
       - name: Check for failed tests
         run: |
           ! grep -r "❌" leaderboards/*
+          echo "PASSED_TESTS=$?" >> "$GITHUB_ENV"
           exit $?
+
+      - name: Output logs
+        if: always() && env.PASSED_TESTS != 1
+        run: |
+          cat logs/*
 
       - name: Push new leaderboards
         if: always() && github.event_name == 'push' && github.ref == 'refs/heads/master'
