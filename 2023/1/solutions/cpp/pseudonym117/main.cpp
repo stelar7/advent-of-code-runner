@@ -3,6 +3,7 @@
 #include <iostream>
 #include <optional>
 #include <string>
+#include <limits>
 
 enum TrieMatchType {
     none,
