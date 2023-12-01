@@ -1,4 +1,3 @@
-﻿
 using System.Buffers;
 var span = Console.In.ReadToEnd().AsSpan().TrimEnd();
 int sum1 = 0, sum2 = 0;
@@ -28,13 +27,14 @@ foreach (var line in span.EnumerateLines())
         var i = line.IndexOf(line2);
         if (i is -1)
             continue;
-        min = int.Min(min, i);
+        min = min == -1 ? i : int.Min(min, i);
     }
     sum2 += ToNum(min, line) * 10 + ToNum(max, line);
 }
 
 Console.WriteLine(sum1);
 Console.WriteLine(sum2);
+
 static int ToNum(int index, ReadOnlySpan<char> span)
 {
     var c = span[index];
