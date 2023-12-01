@@ -23,10 +23,10 @@ foreach (var line in span.EnumerateLines())
         sum1 += ToNum(min, line) * 10 + ToNum(max, line);
     foreach (var line2 in NotNiceNumbers)
     {
-        max = int.Max(max, line.LastIndexOf(line2));
         var i = line.IndexOf(line2);
         if (i is -1)
             continue;
+        max = int.Max(max, line.LastIndexOf(line2));
         min = min == -1 ? i : int.Min(min, i);
     }
     sum2 += ToNum(min, line) * 10 + ToNum(max, line);
