@@ -20,7 +20,8 @@ foreach (var line in span.EnumerateLines())
 {
     int min = line.IndexOfAny(NiceNumbers);
     int max = line.LastIndexOfAny(NiceNumbers);
-    sum1 += ToNum(min, line) * 10 + ToNum(max, line);
+    if (min is not -1)
+        sum1 += ToNum(min, line) * 10 + ToNum(max, line);
     foreach (var line2 in NotNiceNumbers)
     {
         max = int.Max(max, line.LastIndexOf(line2));
