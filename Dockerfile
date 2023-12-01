@@ -1,5 +1,5 @@
 # 1. Start with an Ubuntu base image
-FROM ubuntu:22.04
+FROM ubuntu:23.10
 
 # 2. Configure TZ, so we don't get interactive prompt
 ENV TZ=Europe/Oslo
@@ -9,8 +9,13 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -yqq --no-install-recommends \
   build-essential git wget ca-certificates curl unzip ninja-build ccache gnupg apt-transport-https gpg
 
-# 4. Tell apt to install node.js from nodesource.com, to get v16.x instead of v12.x
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+# 4. Install nodejs
+RUN mkdir -p /etc/apt/keyrings; \
+  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg >/dev/null; \
+  NODE_MAJOR=20;\
+  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list >/dev/null;\
+  apt-get update;\
+  apt-get install nodejs -y
 
 # 5. Install cmake
 RUN apt remove --purge --auto-remove cmake; \
@@ -29,11 +34,11 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E03280
   dpkg -i packages-microsoft-prod.deb; \
   rm packages-microsoft-prod.deb; \
   apt update; \
-  apt install -yqq mono-complete dotnet-sdk-7.0; 
+  apt install -yqq mono-complete dotnet-sdk-8.0; 
 
 # 7. Install all other compilers, from apt-get
 RUN apt update && apt install -yqq --no-install-recommends \
-  cargo elixir erlang openjdk-17-jdk golang nodejs php-cli python3 ruby rustc \
+  cargo elixir erlang openjdk-21-jdk golang nodejs php-cli python3 ruby rustc \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get autoremove -yqq
 

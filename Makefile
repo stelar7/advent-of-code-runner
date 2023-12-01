@@ -1,4 +1,4 @@
-export DOCKER_TAG="stelar7/advent-of-code-runner:2022"
+export DOCKER_TAG="stelar7/advent-of-code-runner:2023"
 
 .PHONY:
 	test\

@@ -4,7 +4,7 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     container: 
-      image: stelar7/advent-of-code-runner:2022
+      image: stelar7/advent-of-code-runner:2023
     env:
       PASSED_TESTS: 0
 
