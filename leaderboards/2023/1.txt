@@ -1,6 +1,6 @@
 
 -- Day 1 --
 language   author          compile    total      average    status     
-Rust       mingweisamuel   371ms      5ms                   ❌ /__w/advent-of-code-runner/advent-of-code-runner/2023/1/io/example1.input
-C++        pseudonym117    1093ms     56ms       6ms        ✅
-NodeJS     stelar7         0ms        303ms      49ms       ✅
+Rust       mingweisamuel   59ms       5ms                   ❌ /home/stelar7/advent-of-code-runner/2023/1/io/example1.input
+C++        pseudonym117    2539ms     61ms       6ms        ✅
+NodeJS     stelar7         0ms        344ms      44ms       ✅

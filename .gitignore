@@ -5,3 +5,4 @@
 **/*.class
 /.vscode
 /run_rust.bash
+logs/*
