@@ -47,7 +47,7 @@ jobs:
         run: |
           ! grep -r "❌" leaderboards/*
           echo "PASSED_TESTS=$?" >> "$GITHUB_ENV"
-          exit $?
+          exit $PASSED_TESTS
 
       - name: Output logs
         if: always() && env.PASSED_TESTS == 1
