@@ -52,7 +52,7 @@ jobs:
       - name: Output logs
         if: always() && env.PASSED_TESTS == 1
         run: |
-          cat logs/*
+          find logs/ -type f -name *.log -print -exec cat {} \;
 
       - name: Push new leaderboards
         if: always() && github.event_name == 'push' && github.ref == 'refs/heads/master'
