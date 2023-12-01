@@ -10,7 +10,7 @@
 uint64_t result1 = 0;
 uint64_t result2 = 0;
 
-#define DATA_BUFFER_SIZE 200000
+#define DATA_BUFFER_SIZE 23000
 static char data_buffer[DATA_BUFFER_SIZE];
 
 void get_file(const char* file_name, char*& data, char*& end_data)
