@@ -10,7 +10,7 @@ START=$($D/util/start.sh)
 while read INPUT OUTPUT; do
     CURRENT=$($D/util/start.sh)
 
-    cat $INPUT | timeout --signal=SIGKILL 20s elixir $SOLUTION | diff --strip-trailing-cr $OUTPUT - >/dev/null
+    cat $INPUT | timeout --signal=SIGKILL 20s elixir $SOLUTION 1> diff --strip-trailing-cr $OUTPUT - >/dev/null
     if [ $? -ne 0 ]; then
         $D/util/error.sh "Elixir" "$SOLUTION" "$INPUT" "$($D/util/stop.sh $CURRENT)" "0"
         exit
