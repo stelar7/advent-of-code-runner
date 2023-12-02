@@ -12,5 +12,6 @@ $D/../../lang/node.sh                    "$D/solutions/node/stelar7/main.mjs"   
 $D/../../lang/python3.sh                 "$D/solutions/python/ayato/main.py"               "$D/io/*"
 $D/../../lang/dotnet_c_sharp.sh          "$D/solutions/dotnet_c_sharp/aoshiw"              "$D/io/*"
 $D/../../lang/elixir.sh                  "$D/solutions/elixir/leastrio/main.exs"           "$D/io/*"
+$D/../../lang/cargo_rust.sh              "$D/solutions/rust/FX"                            "$D/io/*"
 
 echo ""
