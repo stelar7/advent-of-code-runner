@@ -1,4 +1,9 @@
 
 -- Day 1 --
 language   author          compile    total      average    status     
-Elixir     leastrio        0ms        194ms                 ❌ /__w/advent-of-code-runner/advent-of-code-runner/2023/1/io/aoshiw.input
+Rust       mingweisamuel   2462ms     98ms       6ms        ✅
+C++        pseudonym117    1751ms     101ms      6ms        ✅
+C++        querijn         1380ms     106ms      7ms        ✅
+Python3    ayato           0ms        322ms      36ms       ✅
+NodeJS     stelar7         0ms        485ms      51ms       ✅
+C#         aoshiw          3739ms     750ms      68ms       ✅
