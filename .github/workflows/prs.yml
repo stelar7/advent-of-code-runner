@@ -47,7 +47,7 @@ jobs:
         run: |
           ! grep -r "❌" leaderboards/*
           echo "PASSED_TESTS=$?" >> "$GITHUB_ENV"
-          ! grep -r "❌" leaderboards/*
+          ! grep -r "❌" leaderboards/* > /dev/null
           exit $?
 
       - name: Output logs
