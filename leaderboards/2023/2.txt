@@ -1,4 +1,4 @@
 
 -- Day 2 --
 language   author          compile    total      average    status     
-C++        querijn         1349ms     15ms       6ms        ✅
+C++        querijn         1384ms     15ms       6ms        ✅
