@@ -10,5 +10,6 @@ $D/../../lang/elixir.sh                  "$D/solutions/elixir/leastrio/main.exs"
 $D/../../lang/node.sh                    "$D/solutions/node/stelar7/main.mjs"              "$D/io/*"
 $D/../../lang/cargo_rust.sh              "$D/solutions/rust/thedrone7"	                   "$D/io/*"
 $D/../../lang/cargo_rust.sh              "$D/solutions/rust/FX"                            "$D/io/*"
+$D/../../lang/cargo_rust.sh              "$D/solutions/rust/mingweisamuel"                 "$D/io/*"
 
 echo ""
