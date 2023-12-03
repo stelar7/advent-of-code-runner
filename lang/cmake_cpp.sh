@@ -5,13 +5,14 @@ D=$(dirname $(realpath $0))
 SOLUTION=$1
 IO_FILES=$2
 
+LOGPATH="$D/../logs/$(basename $(dirname $SOLUTION))/${SOLUTION##*/}"
 COMPILETIME=$($D/cmake_cpp_build.sh $SOLUTION)
 START=$($D/util/start.sh)
 
 while read INPUT OUTPUT; do
     CURRENT=$($D/util/start.sh)
 
-    cat $INPUT | timeout --signal=SIGKILL 20s $SOLUTION/build/out $INPUT | diff --strip-trailing-cr $OUTPUT - >/dev/null
+    cat $INPUT | timeout --signal=SIGKILL 20s $SOLUTION/build/out $INPUT | diff --strip-trailing-cr $OUTPUT - > $LOGPATH/cpp_error.log
     if [ $? -ne 0 ]; then
         $D/util/error.sh "C++" "$SOLUTION/CMakeLists.txt" "$INPUT" "$($D/util/stop.sh $CURRENT)" "$COMPILETIME"
         exit
