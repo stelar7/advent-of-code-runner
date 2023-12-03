@@ -22,10 +22,7 @@ const NUMBERS: [&[u8]; 10] = [
 
 #[inline(always)]
 fn find_first1(line: &str) -> u8 {
-    let bytes = line.as_bytes();
-
-    for i in 0..bytes.len() {
-        let byte = bytes[i];
+    for byte in line.as_bytes() {
         if byte.is_ascii_digit() {
             return byte - b'0';
         }
@@ -36,10 +33,7 @@ fn find_first1(line: &str) -> u8 {
 
 #[inline(always)]
 fn find_last1(line: &str) -> u8 {
-    let bytes = line.as_bytes();
-
-    for i in (0..bytes.len()).rev() {
-        let byte = bytes[i];
+    for byte in line.as_bytes().iter().rev() {
         if byte.is_ascii_digit() {
             return byte - b'0';
         }
@@ -56,6 +50,11 @@ fn find_first2(line: &str) -> u8 {
         let byte = bytes[i];
         if byte.is_ascii_digit() {
             return byte - b'0';
+        }
+
+        // skip if the remaining bytes aren't long enough to fit a word anymore
+        if bytes.len() - i < 3 {
+            continue;
         }
 
         for (j, number) in NUMBERS.iter().enumerate() {
@@ -76,6 +75,11 @@ fn find_last2(line: &str) -> u8 {
         let byte = bytes[i];
         if byte.is_ascii_digit() {
             return byte - b'0';
+        }
+
+        // skip if the remaining bytes aren't long enough to fit a word anymore
+        if i < 3 {
+            continue;
         }
 
         for (j, number) in NUMBERS.iter().enumerate().rev() {
