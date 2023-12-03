@@ -63,24 +63,42 @@ console.log(
     .reduce((acc, part) => acc + part.number, 0)
 );
 
+
 const gears = parts.filter((part) => part.type == "*");
-const hasConnection = gears.filter((part, index) =>
-  gears.some(
-    (otherPart, otherIndex) =>
-      index != otherIndex &&
-      part.partIndex.x == otherPart.partIndex.x &&
-      part.partIndex.y == otherPart.partIndex.y
+const gearConnections = gears
+  .filter((part, index) =>
+    gears.some(
+      (otherPart, otherIndex) =>
+        index != otherIndex &&
+        part.partIndex.x == otherPart.partIndex.x &&
+        part.partIndex.y == otherPart.partIndex.y
+    )
   )
+  .map((part) => {
+    const key = `${part.partIndex.x}-${part.partIndex.y}`;
+    const value = part.number;
+
+    return {
+      key,
+      value,
+    };
+  });
+
+
+const validConnections = gearConnections.filter(
+  (connection) =>
+    gearConnections.filter(
+      (otherConnection) => otherConnection.key == connection.key
+    ).length == 2
 );
 
 const connectionData = {};
-hasConnection.forEach((part) => {
-  const key = `${part.partIndex.x}-${part.partIndex.y}`;
-  if (!connectionData[key]) {
-    connectionData[key] = part.number;
-  } else {
-    connectionData[key] *= part.number;
+validConnections.forEach((connection) => {
+  if (!connectionData[connection.key]) {
+    connectionData[connection.key] = 1;
   }
+
+  connectionData[connection.key] *= connection.value;
 });
 
 console.log(Object.values(connectionData).reduce((acc, next) => acc + next, 0));
