@@ -76,28 +76,28 @@ fn main() {
 			// Check diagonally
 			if i > 0 && start > &0 {
 				let up_left = lines[i-1].chars().nth(start-1).unwrap();
-				if up_left != '.' {
+				if up_left != '.' && !up_left.is_digit(10) {
 					valid = true;
 				}
 			}
 
 			if i > 0 && end < &(lines[i].len() - 1) {
 				let up_right = lines[i-1].chars().nth(end+1).unwrap();
-				if up_right != '.' {
+				if up_right != '.' && !up_right.is_digit(10) {
 					valid = true;
 				}
 			}
 
 			if i < lines.len() - 1 && start > &0 {
 				let down_left = lines[i+1].chars().nth(start-1).unwrap();
-				if down_left != '.' {
+				if down_left != '.' && !down_left.is_digit(10) {
 					valid = true;
 				}
 			}
 
 			if i < lines.len() - 1 && end < &(lines[i].len() - 1) {
 				let down_right = lines[i+1].chars().nth(end+1).unwrap();
-				if down_right != '.' {
+				if down_right != '.' && !down_right.is_digit(10) {
 					valid = true;
 				}
 			}
