@@ -1,16 +1,18 @@
-use std::{collections::HashMap, io::stdin};
+use std::io::stdin;
+
+use hashbrown::HashMap;
 
 fn main() {
     let lines: Vec<_> = stdin().lines().map(Result::unwrap).collect();
 
     let mut sum1: u32 = 0;
 
-    let mut map: HashMap<(usize, usize), Vec<u32>> = HashMap::new();
+    let mut map: HashMap<(usize, usize), Vec<u32>> = HashMap::with_capacity(1000);
 
     let mut prev_line: Option<&[u8]> = None;
     let mut line_iter = lines.iter().enumerate().peekable();
 
-    let mut gear_positions: Vec<(usize, usize)> = Vec::with_capacity(25);
+    let mut gear_positions: Vec<(usize, usize)> = Vec::with_capacity(100);
     while let Some((i, line)) = line_iter.next() {
         let mut place_in_number: u32 = 1;
         let mut number: u32 = 0;
