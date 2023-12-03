@@ -7,10 +7,10 @@ fn main() {
         .enumerate()
         .map(|(i, line)| {
             // split up line
-            let (_, line_after_colon) = line[6..].split_once(":").unwrap();
-            let draws = line_after_colon.split(";").map(|draw| {
-                draw.split(",")
-                    .map(|cube| cube[1..].split_once(" ").unwrap())
+            let (_, line_after_colon) = line[6..].split_once(':').unwrap();
+            let draws = line_after_colon.split(';').map(|draw| {
+                draw.split(',')
+                    .map(|cube| cube[1..].split_once(' ').unwrap())
             });
 
             let mut return_value = i + 1;
