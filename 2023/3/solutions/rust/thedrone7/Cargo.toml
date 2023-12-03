@@ -8,7 +8,6 @@ authors = ["TheDrone7 <h@thedrone7.dev>"]
 
 [dependencies]
 itertools = "0.12.0"
-scan_fmt = "0.2.6"
 
 [profile.release]
 opt-level = 3
