@@ -146,89 +146,88 @@ public:
 };
 
 template<typename Reporter>
-int day1(char* filename) {
-    std::ifstream file(filename);
+struct day1 {
+    void operator()(const char* filename) const {
+        std::ifstream file(filename);
 
-    const Trie lookup{
-        {"0", 0},
-        {"1", 1},
-        {"2", 2},
-        {"3", 3},
-        {"4", 4},
-        {"5", 5},
-        {"6", 6},
-        {"7", 7},
-        {"8", 8},
-        {"9", 9},
-        {"zero", 0},
-        {"one", 1},
-        {"two", 2},
-        {"three", 3},
-        {"four", 4},
-        {"five", 5},
-        {"six", 6},
-        {"seven", 7},
-        {"eight", 8},
-        {"nine", 9},
-    };
+        const Trie lookup{
+            {"0", 0},
+            {"1", 1},
+            {"2", 2},
+            {"3", 3},
+            {"4", 4},
+            {"5", 5},
+            {"6", 6},
+            {"7", 7},
+            {"8", 8},
+            {"9", 9},
+            {"zero", 0},
+            {"one", 1},
+            {"two", 2},
+            {"three", 3},
+            {"four", 4},
+            {"five", 5},
+            {"six", 6},
+            {"seven", 7},
+            {"eight", 8},
+            {"nine", 9},
+        };
 
+        int sumOne = 0;
+        int sumTwo = 0;
+        std::string line;
+        while (std::getline(file, line)) {
+            int lineFirst = 0;
+            int lineLast = 0;
 
-    int sumOne = 0;
-    int sumTwo = 0;
-    std::string line;
-    while (std::getline(file, line)) {
-        int lineFirst = 0;
-        int lineLast = 0;
-
-        // technically can refactor this to use the lookup table instead... but i dont want to this late at night
-        for (const auto working : line) {
-            if (working >= '0' && working <= '9') {
-                if (!lineFirst) {
-                    lineFirst = working;
-                }
-                lineLast = working;
-            }
-        }
-        if (lineFirst) {
-            sumOne += (lineFirst - '0') * 10 + (lineLast - '0');
-        }
-
-        lineFirst = lineLast = 0;
-        for (auto i = 0; i < line.size(); ++i) {
-            std::optional<int> value;
-            auto currentNode = &lookup.get_root();
-            for (auto scanIndex = 0; scanIndex < line.size(); ++scanIndex) {
-                std::string_view current(line.c_str() + i + scanIndex, 1);
-
-                auto match = currentNode->at(current);
-
-                if (match.type == TrieMatchType::none) {
-                    break;
-                }
-                if (match.type == TrieMatchType::partial) {
-                    currentNode = match.continue_at;
-                    continue;
-                }
-                if (match.type == TrieMatchType::full) {
-                    value = match.value;
-                    break;
+            // technically can refactor this to use the lookup table instead... but i dont want to this late at night
+            for (const auto working : line) {
+                if (working >= '0' && working <= '9') {
+                    if (!lineFirst) {
+                        lineFirst = working;
+                    }
+                    lineLast = working;
                 }
             }
-
-            if (value.has_value()) {
-                if (!lineFirst) {
-                    lineFirst = *value;
-                }
-                lineLast = *value;
+            if (lineFirst) {
+                sumOne += (lineFirst - '0') * 10 + (lineLast - '0');
             }
+
+            lineFirst = lineLast = 0;
+            for (auto i = 0; i < line.size(); ++i) {
+                std::optional<int> value;
+                auto currentNode = &lookup.get_root();
+                for (auto scanIndex = 0; scanIndex < line.size(); ++scanIndex) {
+                    std::string_view current(line.c_str() + i + scanIndex, 1);
+
+                    auto match = currentNode->at(current);
+
+                    if (match.type == TrieMatchType::none) {
+                        break;
+                    }
+                    if (match.type == TrieMatchType::partial) {
+                        currentNode = match.continue_at;
+                        continue;
+                    }
+                    if (match.type == TrieMatchType::full) {
+                        value = match.value;
+                        break;
+                    }
+                }
+
+                if (value.has_value()) {
+                    if (!lineFirst) {
+                        lineFirst = *value;
+                    }
+                    lineLast = *value;
+                }
+            }
+            auto lineValue = lineFirst * 10 + lineLast;
+            sumTwo += lineValue;
         }
-        auto lineValue = lineFirst * 10 + lineLast;
-        sumTwo += lineValue;
+
+        Reporter::report(sumOne);
+        Reporter::report(sumTwo);
     }
-
-    Reporter::report(sumOne);
-    Reporter::report(sumTwo);
-    
-    return 0;
-}
+};
 }

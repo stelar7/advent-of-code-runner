@@ -1,12 +1,10 @@
 cmake_minimum_required(VERSION 3.17)
 project(out)
 
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+add_subdirectory(../../../../1/solutions/cpp/pseudonym117/utils utils/)
 
-add_subdirectory(utils)
-
-add_executable(out main.cpp day1.hpp)
-target_link_libraries(out utils)
+add_executable(out main.cpp day2.hpp)
+target_link_libraries(out INTERFACE utils)
 target_include_directories(out PRIVATE $<TARGET_PROPERTY:utils,INTERFACE_INCLUDE_DIRECTORIES>)
 
 set_target_properties(out PROPERTIES 
@@ -19,4 +17,6 @@ set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT o
 if (WIN32)
 	target_compile_definitions(out PUBLIC WIN32_LEAN_AND_MEAN)
 	target_compile_definitions(out PUBLIC NOMINMAX)
+else ()
+	SET(CMAKE_C_COMPILER gcc-11)
 endif ()
