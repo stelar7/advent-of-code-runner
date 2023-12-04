@@ -1,11 +1,11 @@
 
 -- Day 1 --
 language   author          compile    total      average    status     
-Rust       FX              464ms      114ms      5ms        ✅
-Rust       mingweisamuel   2557ms     118ms      6ms        ✅
-C++        pseudonym117    1761ms     122ms      6ms        ✅
-C++        querijn         1399ms     123ms      7ms        ✅
-Python3    ayato           0ms        400ms      36ms       ✅
-NodeJS     stelar7         0ms        595ms      49ms       ✅
-C#         aoshiw          3431ms     866ms      79ms       ✅
-Elixir     leastrio        0ms        4788ms     383ms      ✅
+Rust       FX              452ms      114ms      5ms        ✅
+Rust       mingweisamuel   2486ms     118ms      5ms        ✅
+C++        pseudonym117    1762ms     123ms      6ms        ✅
+C++        querijn         1376ms     127ms      7ms        ✅
+Python3    ayato           0ms        404ms      35ms       ✅
+NodeJS     stelar7         0ms        589ms      48ms       ✅
+C#         aoshiw          3786ms     894ms      73ms       ✅
+Elixir     leastrio        0ms        4730ms     404ms      ✅
