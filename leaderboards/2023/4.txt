@@ -1,4 +1,4 @@
 
 -- Day 4 --
 language   author          compile    total      average    status     
-Rust       thedrone7       20626ms    24ms       5ms        ✅
+Rust       thedrone7       20475ms    24ms       5ms        ✅
