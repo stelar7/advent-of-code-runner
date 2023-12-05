@@ -68,7 +68,7 @@ line: for (const line of lines) {
   for (const game of games) {
     if (!isPossible(game)) {
       continue line;
-    }
+    } 
   }
 
   sum += parseInt(id);
