@@ -36,6 +36,7 @@ jobs:
 
       - name: Push new leaderboards
         if: always() && github.event_name == 'push' && github.ref == 'refs/heads/master'
+        shell: bash
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           if [[ `git status --porcelain` ]]; then
