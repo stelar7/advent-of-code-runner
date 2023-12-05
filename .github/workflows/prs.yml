@@ -17,6 +17,7 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git diff --name-only origin/${{ github.base_ref }}..${{ github.sha }} |\
           awk -F / ' $1 ~ /[0-9]{4}/ && $2 ~ /[0-9]{1,2}/ {print "make test YEAR="$1 " " "DAY="$2}' |\
           while read line ; do eval $line; done
