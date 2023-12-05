@@ -6,7 +6,7 @@ let accumulator = 0
 
 splitInput.forEach(line => {
     const symbols = line.split("").filter(char => char.match(/\d/));
-    accumulator += parseInt(symbols[0] + symbols[symbols.length-1]);
+    accumulator += parseInt(symbols[0] + symbols[symbols.length-1]) || 0;
 })
 console.log(accumulator);
 
