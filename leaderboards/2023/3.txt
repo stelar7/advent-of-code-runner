@@ -1,8 +1,8 @@
 
 -- Day 3 --
 language   author          compile    total      average    status     
-Rust       FX              2551ms     60ms       5ms        ✅
-C++        querijn         1347ms     63ms       6ms        ✅
-Rust       thedrone7       2563ms     65ms       7ms        ✅
-NodeJS     token07         0ms        328ms      55ms       ✅
-NodeJS     stelar7         0ms        334ms      54ms       ✅
+Rust       FX              2752ms     63ms       5ms        ✅
+C++        querijn         1384ms     64ms       7ms        ✅
+Rust       thedrone7       2657ms     68ms       7ms        ✅
+NodeJS     stelar7         0ms        338ms      53ms       ✅
+NodeJS     token07         0ms        339ms      57ms       ✅
