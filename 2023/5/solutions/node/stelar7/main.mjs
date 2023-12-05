@@ -25,31 +25,37 @@ class RangeMap {
   }
 
   get(value) {
+    let result = value;
     for (let i = 0; i < this.start.length; i++) {
-      if (this.start[i] <= value && this.start[i] + this.between[i] > value) {
-        return this.end[i] + (value - this.start[i]);
+      let start = this.start[i];
+      let end = this.start[i] + this.between[i];
+
+      if (value >= start && value < end) {
+        result = this.end[i] + (value - start);
+        break;
       }
     }
-
-    return value;
+    return result;
   }
 
   getBound(value) {
-    const maxBound = 100_000_000_000;
-    let bound = maxBound;
-    for (let i = 0; i < this.start.length; i++) {
-      if (this.start[i] > value) {
-        bound = Math.min(bound, this.start[i] - value - 1);
-      }
+    let nextStart = Number.MAX_SAFE_INTEGER;
+    let result = value;
 
-      if (this.start[i] <= value && this.start[i] + this.between[i] > value) {
-        return [
-          this.end[i] + (value - this.start[i]),
-          this.between[i] - (value - this.start[i]) - 1,
-        ];
+    for (let i = 0; i < this.start.length; i++) {
+      let start = this.start[i];
+      let end = this.start[i] + this.between[i];
+
+      if (value >= start && value < end) {
+        result = this.end[i] + (value - start);
+        nextStart = this.between[i] - (value - start + 1);
+        break;
+      } else if (start > value) {
+        nextStart = Math.min(nextStart, start - value + 1);
       }
     }
-    return [value, bound == maxBound ? 0 : bound];
+
+    return [result, nextStart];
   }
 }
 
@@ -127,10 +133,8 @@ const mappedSeeds = seeds.map((seed) => {
   return value;
 });
 
-console.log(Math.min(...mappedSeeds));
-
 function getValueAndBound(value) {
-  let bound = 100_000_000_000;
+  let bound = Number.MAX_SAFE_INTEGER;
   let val = value;
 
   for (const map of rangemaps) {
@@ -138,7 +142,6 @@ function getValueAndBound(value) {
     bound = Math.min(bound, computedBound);
     val = computedValue;
   }
-
 
   return [val, bound];
 }
@@ -154,4 +157,5 @@ for (let i = 0; i < seeds.length; i += 2) {
   }
 }
 
-console.log(min);
+console.log(Math.min(...mappedSeeds));
+console.log(min );
