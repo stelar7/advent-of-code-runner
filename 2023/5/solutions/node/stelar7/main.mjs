@@ -158,4 +158,4 @@ for (let i = 0; i < seeds.length; i += 2) {
 }
 
 console.log(Math.min(...mappedSeeds));
-console.log(min );
+console.log(min);

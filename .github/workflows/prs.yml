@@ -14,11 +14,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run tests
+      - name: Run tests for leaderboards
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         shell: bash
         run: |
-          git diff --name-only origin/main origin/${GITHUB_HEAD_REF} |\
-          awk -F / '{print "make test YEAR="$1 " " "DAY="$2}' |\
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git diff --name-only origin/master ${GITHUB_SHA}^ |\
+          awk -F / ' $1 ~ /[0-9]{4}/ && $2 ~ /[0-9]{1,2}/ {print "make test YEAR="$1 " " "DAY="$2}' |\
+          while read line ; do eval $line; done
+
+      - name: Run tests for pr
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git diff --name-only origin/master ${GITHUB_SHA} |\
+          awk -F / ' $1 ~ /[0-9]{4}/ && $2 ~ /[0-9]{1,2}/ {print "make test YEAR="$1 " " "DAY="$2}' |\
           while read line ; do eval $line; done
 
       - name: Check for failed tests
@@ -35,10 +46,13 @@ jobs:
 
       - name: Push new leaderboards
         if: always() && github.event_name == 'push' && github.ref == 'refs/heads/master'
+        shell: bash
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add leaderboards/*
-          git commit -m "Update leaderboards"
-          git push
+          if [[ `git status --porcelain` ]]; then
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add leaderboards/*
+            git commit -m "Update leaderboards"
+            git push
+          fi
