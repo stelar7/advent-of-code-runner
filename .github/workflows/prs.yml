@@ -17,7 +17,7 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
-          git diff --name-only |\
+          git diff --name-only origin/main origin/${GITHUB_HEAD_REF} |\
           awk -F / '{print "make test YEAR="$1 " " "DAY="$2}' |\
           while read line ; do eval $line; done
 
