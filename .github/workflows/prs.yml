@@ -38,8 +38,10 @@ jobs:
         if: always() && github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add leaderboards/*
-          git commit -m "Update leaderboards"
-          git push
+          if [[ `git status --porcelain` ]]; then
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add leaderboards/*
+            git commit -m "Update leaderboards"
+            git push
+          fi
