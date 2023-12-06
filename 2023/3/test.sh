@@ -11,5 +11,6 @@ $D/../../lang/node.sh                    "$D/solutions/node/stelar7/main.mjs"   
 $D/../../lang/node.sh                    "$D/solutions/node/token07/03.js"                 "$D/io/*"
 $D/../../lang/cargo_rust.sh              "$D/solutions/rust/thedrone7"                     "$D/io/*"
 $D/../../lang/cargo_rust.sh              "$D/solutions/rust/FX"                            "$D/io/*"
+$D/../../lang/python3.sh                 "$D/solutions/python/fsantos98/day3.py"           "$D/io/*"
 
 echo ""
