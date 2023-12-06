@@ -23,6 +23,7 @@ docker.test:
 	/bin/bash -c "cd /test && make test && exit"
 
 test:
+	chmod +x ./lang/benchy_build.sh
 	./lang/benchy_build.sh
 	mkdir -p leaderboards/$(YEAR)
 	./$(YEAR)/$(DAY)/test.sh | awk '{print $$4, $$0}' | sort -n | cut -d' ' -f2- > ./leaderboards/$(YEAR)/$(DAY).txt
