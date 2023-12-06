@@ -102,10 +102,10 @@ def getTotalNumbers(data, symbols_pos):
     
     return total, total_part2
 
-def main():
+if __name__ == "__main__":
     data = loadData()
     symbols_pos = getSymbolsPos(data)
     total, total_part2 = getTotalNumbers(data, symbols_pos)
-    print(f"{total} \n{total_part2}")
 
-main()
+    print(total)
+    print(total_part2)
