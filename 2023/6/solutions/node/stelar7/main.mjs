@@ -14,22 +14,18 @@ const distances = lines[1]
   .slice(1)
   .map((x) => parseInt(x));
 
-function checkWins(time, distance) {
-  let wins = 0;
-  for (let j = 0; j < time; j++) {
-    const speed = j;
-    const remaining = time - j;
-    const distanceCovered = speed * remaining;
-    if (distanceCovered > distance) {
-      wins++;
-    }
-  }
-  return wins;
+function solveQuadratic(time, distance) {
+  const bias = 0.001;
+
+  const one = Math.ceil((time - Math.sqrt(Math.pow(time, 2) - 4 * distance)) / 2 + bias);
+  const two = Math.floor((time + Math.sqrt(Math.pow(time, 2) - 4 * distance)) / 2 - bias);
+
+  return two - one + 1;
 }
 
-const allWins = times.map((time, i) => checkWins(time, distances[i]));
+const allWins = times.map((time, i) => solveQuadratic(time, distances[i]));
 console.log(allWins.reduce((a, b) => a * b, 1));
 
 const finalRaceTime = parseInt(times.join(""));
 const finalDistance = parseInt(distances.join(""));
-console.log(checkWins(finalRaceTime, finalDistance));
+console.log(solveQuadratic(finalRaceTime, finalDistance));
