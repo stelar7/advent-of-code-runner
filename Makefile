@@ -23,6 +23,7 @@ docker.test:
 	/bin/bash -c "cd /test && make test && exit"
 
 test:
+	chmod +x ./lang/benchy_cpp.sh
 	chmod +x ./lang/benchy_build.sh
 	./lang/benchy_build.sh
 	mkdir -p leaderboards/$(YEAR)
