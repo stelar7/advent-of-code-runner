@@ -3,12 +3,6 @@ set -uo pipefail
 D=$(dirname $(realpath $0))
 
 SOLUTION=$1
-LOGPATH="$D/../logs/$(basename $(dirname $SOLUTION))/${SOLUTION##*/}"
-mkdir -p $LOGPATH
+IO_FILES=$2
 
-rm -rf $SOLUTION/build
-mkdir $SOLUTION/build
-cd $SOLUTION/build
-
-timeout --signal=SIGKILL 120s cmake -G Ninja -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_BUILD_TYPE=Release .. > $LOGPATH/cmake.log 2>&1
-timeout --signal=SIGKILL 120s ninja > $LOGPATH/ninja.log 2>&1
+$D/util/bench/benchy "C++" "$SOLUTION" "$IO_FILES" "build/out" "$D/benchy_cpp_build.sh"
