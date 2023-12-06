@@ -2,7 +2,7 @@
 set -euo pipefail
 
 D=$(dirname $(realpath $0))
-chmod +x $D/../../lang/util/bench/benchy
+chmod +x $D/../../lang/benchy_build.sh
 chmod +x $D/../../lang/benchy_cpp.sh
 $D/../../lang/benchy_build.sh
 
