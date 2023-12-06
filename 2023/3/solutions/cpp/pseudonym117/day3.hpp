@@ -1,7 +1,6 @@
 #pragma once
 
 #include <algorithm>
-#include <cmath>
 #include <fstream>
 #include <numeric>
 #include <string>
@@ -20,14 +19,6 @@ struct part {
     char part;
     std::vector<int> part_numbers;
 };
-
-unsigned int parse_unsigned_int_nocheck(const std::string_view& str) {
-    unsigned int value = 0;
-    for (auto i = 0; i < str.size(); ++i) {
-        value += static_cast<int>((str[i] - '0') * std::pow(10, str.size() - i - 1));
-    }
-    return value;
-}
 
 void parse_line(int line_y, const std::string_view& line, std::vector<location>& part_locations, std::vector<location>& part_number_locations) {
     int part_number_start = -1;

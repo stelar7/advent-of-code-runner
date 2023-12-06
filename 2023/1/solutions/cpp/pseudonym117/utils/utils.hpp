@@ -1,6 +1,7 @@
 #pragma once
 
 #include <chrono>
+#include <cmath>
 #include <iostream>
 #include <string>
 
@@ -49,4 +50,13 @@ struct main_runner {
         return 0;
     }
 };
+
+unsigned int parse_unsigned_int_nocheck(const std::string_view& str) {
+    unsigned int value = 0;
+    for (auto i = 0; i < str.size(); ++i) {
+        value += static_cast<int>((str[i] - '0') * std::pow(10, str.size() - i - 1));
+    }
+    return value;
+}
+
 }
