@@ -60,7 +60,7 @@ double MeasureRun(std::string_view command, std::string_view expectedOutput = ""
 	{
 		expectedOutput = Trim(expectedOutput);
 		result = Trim(result);
-		printf("%s\n", result.c_str());
+		printf("❌ %s\n", result.c_str());
 		if (result != expectedOutput)
 			return -1;
 	}
