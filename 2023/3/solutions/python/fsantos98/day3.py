@@ -36,12 +36,11 @@ def getSymbolsPos(data):
 def searchForSymbol(data, x, y):
     value = data[x][y]
     if(value.isdigit()):
-
         # right
         n = 1
         while(True):
             right_value = y + n
-            if(right_value > len(data[x]) - 1):
+            if(right_value > len(data[x]) - 1  or right_value < 0):
                 break
 
             if(data[x][right_value].isdigit()):
@@ -54,7 +53,7 @@ def searchForSymbol(data, x, y):
         n = -1
         while(True):
             left_value = y + n
-            if(left_value > len(data[x]) - 1):
+            if(left_value > len(data[x]) - 1 or left_value < 0):
                 break
             
             if data[x][left_value].isdigit():
