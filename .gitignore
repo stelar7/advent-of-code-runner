@@ -6,3 +6,10 @@
 /.vscode
 /run_rust.bash
 logs/*
+lang/util/bench/CMakeFiles
+lang/util/bench/.ninja_deps
+lang/util/bench/.ninja_log
+lang/util/bench/build.ninja
+lang/util/bench/benchy
+lang/util/bench/CMakeCache.txt
+lang/util/bench/cmake_install.cmake
