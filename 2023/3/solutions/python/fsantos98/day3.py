@@ -1,3 +1,5 @@
+import sys
+
 POSSIBLE_POS = [
     [-1, -1],
     [-1, 0],
@@ -11,15 +13,15 @@ POSSIBLE_POS = [
 
 def loadData():
     data = []
-    with open("day3.txt") as file:
-        n = 0
-        for item in file:
-            if len(data) <= n:
-                data.append([])
-            for char in item:
-                if(char != "\n"):
-                    data[n].append(char)
-            n += 1
+    file = sys.stdin.read().strip().split("\n")
+    n = 0
+    for item in file:
+        if len(data) <= n:
+            data.append([])
+        for char in item:
+            if(char != "\n"):
+                data[n].append(char)
+        n += 1
 
     return data
 
