@@ -1,0 +1,8 @@
+[package]
+name = "out"
+edition = "2021"
+version = "0.1.0"
+authors = ["FX"]
+
+[dependencies]
+anyhow = "1.0.75"
