@@ -1,3 +1,4 @@
 
 -- Day 7 --
 language   author          compile    total      average    status     
+Rust       FX              1811ms     25ms       6ms        ✅
