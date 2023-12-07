@@ -5,7 +5,7 @@ file = sys.stdin.read().strip().split("\n")
 def part1():
     total = 0
     for item in file:
-        parse = item[10:].split("|")
+        parse = item[item.index(':')+2:].split("|")
         my_numbers = parse[0].strip().split(" ")
         winning_numbers = parse[1].strip().split(" ")
 
@@ -22,7 +22,7 @@ def part2():
 
    
     for item in file:
-        parse = item[10:].split("|")
+        parse = item[item.index(':')+2:].split("|")
         
         my_numbers = parse[0].strip().split(" ")
         winning_numbers = parse[1].strip().split(" ")
