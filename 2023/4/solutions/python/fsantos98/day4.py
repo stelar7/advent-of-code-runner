@@ -1,7 +1,8 @@
 import sys
 
+file = sys.stdin.read().strip().split("\n")
+
 def part1():
-    file = sys.stdin.read().strip().split("\n")
     total = 0
     for item in file:
         parse = item[10:].split("|")
@@ -19,7 +20,7 @@ def part2():
     scratches_base = []
     scratches_list = []
 
-    file = sys.stdin.read().strip().split("\n")
+   
     for item in file:
         parse = item[10:].split("|")
         
