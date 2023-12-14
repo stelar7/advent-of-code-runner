@@ -30,7 +30,6 @@ def runRaceSpeed(time, record_distance):
         hold_timer = start + ((end - start) // 2)
 
         if end - start <= 1: break
-
     return time - start * 2
 
 def part1(data):
