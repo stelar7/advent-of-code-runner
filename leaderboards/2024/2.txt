@@ -1,0 +1,7 @@
+
+0a1,2
+> 606
+> 644
+-- Day 2 --
+language   author          compile    total      average    status     
+NodeJS     stelar7         0ms        37ms                  ❌ /home/stelar7/advent-of-code-runner/2024/2/io/stelar7.input
